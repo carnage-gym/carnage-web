@@ -1,15 +1,11 @@
 <script>
-  function closeModal() {
-      const dialog = document.getElementById('dialog');
-      dialog.close();
-  }
   /*
   function addExercises() {
     closeModal();
 
     // BRUH
     var dialog = document.getElementById('dialog');
-    
+
     var list = document.getElementById('ex_list');
     var choices = document.getElementsByName('ex_choice');
 
@@ -20,7 +16,7 @@
       if(elem.firstChild.nextSibling.nextSibling.nextSibling.checked) {
         li = document.createElement('li');
         li.setAttribute("class", "ml-4 ")
-        
+
         node = document.createTextNode(choices[i].firstChild.nextSibling.textContent);
 
         li.appendChild(node);
@@ -31,7 +27,7 @@
   */
 </script>
 
-<dialog id="dialog" class="p-2 bg-zinc-950 rounded-xl w-1/5 outline outline-4 outline-teal-300">
+<dialog id="dialog" data-routines-target="dialog" class="absolute backdrop:backdrop-blur-md p-2 bg-carnage-main rounded-xl w-1/5 outline outline-2 outline-carnage-red">
     <div class="flex justify-between">
       <p class="text-slate-100 text-2xl font-extrabold mt-1 ml-1"><%= @title %></p>
     </div>

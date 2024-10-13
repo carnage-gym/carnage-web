@@ -13,13 +13,15 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-carnage-main min-h-screen relative">
+  <body class="bg-carnage-main h-screen">
     <%= render "layouts/navbar" %>
- <main>
-    <%= render 'layouts/flash', class:"align-right relative" %>
-    <%= turbo_frame_tag "sidebar" %>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
-  </main>
+    <main class="h-screen">
+        <%= render 'layouts/flash', class:"align-right relative" %>
+        <%= turbo_frame_tag "sidebar" %>
+        <%= yield %>
+    </main>
+
+    <%= render 'layouts/footer', class: "fixed bottom-0" %>
+
   </body>
 </html>

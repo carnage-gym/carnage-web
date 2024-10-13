@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :routines
   get 'welcome/index'
   get '/about', to: "welcome#about"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -18,6 +17,11 @@ Rails.application.routes.draw do
     resources :routines, only: [:index, :create, :update, :destroy]
     resources :profiles, only: [:index, :show]
   end
+
+  resources :routines do
+    patch 'edit/addExercise', to: "routines#add_exercise", as: "add_exercise"
+  end
+
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

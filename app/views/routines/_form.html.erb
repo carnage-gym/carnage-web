@@ -1,11 +1,6 @@
 <%= form_with(model: routine, class: "contents relative") do |form| %>
-    <div class="flex gap-8 align-items-left py-16">
-        <%= render SidebarComponent.new do %>
-            <p class="font-semibold text-2xl text-white">Exercises</p>
-            <% for ex in Exercise.all %>
-                <%= render ex, is_workout: false %>
-            <% end %>
-        <% end %>
+    <div class="flex gap-8 align-items-left py-16 pl-16">
+
 
         <div class="w-full">
         <% if routine.errors.any? %>
@@ -19,20 +14,27 @@
             </div>
         <% end %>
 
-        <div class="grid w-full">
-                <%= form.text_field :name, placeholder: "Routine title...", class: "border-none bg-carnage-secondary rounded-lg text-white text-4xl mb-4" %>
-                <%= form.text_field :description, placeholder: "Workout description...", class: "border-none bg-carnage-secondary rounded-lg text-white mb-4" %>
-        </div>
+            <div class="grid w-full">
+                    <%= form.text_field :name, placeholder: "Routine title...", class: "border-none bg-carnage-secondary rounded-lg text-white text-4xl mb-4" %>
+                    <%= form.text_field :description, placeholder: "Workout description...", class: "border-none bg-carnage-secondary rounded-lg text-white mb-4" %>
+            </div>
 
-        <div class="bg-carnage-secondary p-4">
-            <% for set in @exercise_sets %>
-            <% end %>
-        </div>
+            <div class="bg-carnage-secondary p-4">
+                <% for set in routine.exercise_sets %>
+                <% end %>
+            </div>
 
-        <div class="flex justify-center gap-4">
-            <%= form.submit "Save Changes", class: "w-auto rounded-3xl py-2 px-8 bg-carnage-red text-white font-medium cursor-pointer" %>
-        </div>
+            <div data-controller="routines" class="flex justify-center gap-4">
+                <%= render DialogComponent.new(title: "test", close_button_text: "save") do %>
+                    <% for ex in Exercise.all %>
+                    <%= render ex, is_workout: false, routine_id: routine.id %>
+                    <% end %>
+                <% end %>
 
-        </div>
+                <button type="button" data-action="click->routines#show" class="w-auto rounded-3xl py-2 px-8 bg-carnage-red text-white font-medium cursor-pointer">Add stuff</button>
+                <%= form.submit "Save Changes", class: "w-auto rounded-3xl py-2 px-8 bg-carnage-red text-white font-medium cursor-pointer" %>
+            </div>
+
+            </div>
     </div>
 <% end %>

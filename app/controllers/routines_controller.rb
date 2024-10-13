@@ -41,10 +41,8 @@ class RoutinesController < ApplicationController
     respond_to do |format|
       if @routine.update(routine_params)
         format.html { redirect_to routine_url(@routine), notice: "Routine was successfully updated." }
-        format.json { render :show, status: :ok, location: @routine }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @routine.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -55,8 +53,12 @@ class RoutinesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to routines_url, notice: "Routine was successfully destroyed." }
-      format.json { head :no_content }
     end
+  end
+
+  def add_exercise
+    exercise = Exercise.find(params[:exercise_id])
+    puts exercise.name
   end
 
   private
