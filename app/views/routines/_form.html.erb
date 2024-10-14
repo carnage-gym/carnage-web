@@ -20,15 +20,16 @@
             </div>
 
             <div class="bg-carnage-secondary p-4">
-                <% for set in routine.exercise_sets %>
-                <% end %>
+
             </div>
 
             <div data-controller="routines" class="flex justify-center gap-4">
                 <%= render DialogComponent.new(title: "test", close_button_text: "save") do %>
-                    <% for ex in Exercise.all %>
-                    <%= render ex, is_workout: false, routine_id: routine.id %>
+                  <% for ex in Exercise.all %>
+                    <%= render ex, is_workout: false do %>
+                        <%= button_to "+", routine_add_exercise_path(exercise_id: ex.id, routine_id: routine.id) , method: :patch %>
                     <% end %>
+                  <% end %>
                 <% end %>
 
                 <button type="button" data-action="click->routines#show" class="w-auto rounded-3xl py-2 px-8 bg-carnage-red text-white font-medium cursor-pointer">Add stuff</button>

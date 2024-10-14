@@ -10,7 +10,7 @@
                     text-center text-white hover:text-carnage-red-pressed" %>
         </div>
         <% else %>
-            <%= button_to "+", routine_add_exercise_path(exercise_id: exercise.id, routine_id: routine_id) , method: :patch %>
+            <%= yield %>
       <% end %>
     </div>
 

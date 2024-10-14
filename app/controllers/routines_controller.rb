@@ -13,7 +13,11 @@ class RoutinesController < ApplicationController
 
   # GET /routines/new
   def new
-    @routine = current_user.routines.new
+    routine = current_user.routines.new
+
+    if routine.save
+      redirect_to edit_routine_path(routine)
+    end
   end
 
   # GET /routines/1/edit
