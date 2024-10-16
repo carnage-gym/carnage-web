@@ -71,14 +71,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_21_141746) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "routines", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
-    t.string "description"
-    t.integer "user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -88,8 +80,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_21_141746) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
-    t.string "Routine"
-    t.string "User"
     t.integer "height"
     t.integer "weight"
     t.integer "age"

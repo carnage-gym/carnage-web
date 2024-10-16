@@ -10,7 +10,6 @@ class Exercise < ApplicationRecord
 
   has_many :exercise_sets, dependent: :destroy
   has_and_belongs_to_many :workouts
-  has_and_belongs_to_many :routines
   has_and_belongs_to_many :muscle_groups
   belongs_to :user # Every single exercise was created by a user.
 
