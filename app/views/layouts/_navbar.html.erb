@@ -4,7 +4,7 @@
       <% if user_signed_in? %>
         <div class="flex">
             <%= link_to "list_alt", logbook_path, class: "btn btn-ghost md:text-2xl hover:text-primary material-symbols-outlined" %>
-            <%= link_to "fitness_center", logbook_path, class: "btn btn-ghost md:text-2xl hover:text-primary material-symbols-outlined" %>
+            <%= link_to "fitness_center", routines_path, class: "btn btn-ghost md:text-2xl hover:text-primary material-symbols-outlined" %>
         </div>
 
         <div class="dropdown dropdown-end">
@@ -23,7 +23,7 @@
                 </li>
                 <li><a>Settings</a></li>
                 <li>
-                    <div><%= button_to "Log Out", destroy_user_session_path, method: :delete, class:"aa" %></div>
+                    <div class="hover:text-error"><%= button_to "Log Out", destroy_user_session_path, method: :delete %></div>
                 </li>
               </ul>
             </div>

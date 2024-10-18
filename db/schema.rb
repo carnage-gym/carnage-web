@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_21_141746) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_18_202741) do
   create_table "devise_api_tokens", force: :cascade do |t|
     t.string "resource_owner_type", null: false
     t.bigint "resource_owner_id", null: false
@@ -30,12 +30,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_21_141746) do
   create_table "exercise_sets", force: :cascade do |t|
     t.integer "exercise_id", null: false
     t.integer "intensity"
+    t.integer "routine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "workout_id", null: false
     t.integer "weight"
     t.integer "reps"
     t.index ["exercise_id"], name: "index_exercise_sets_on_exercise_id"
+    t.index ["routine_id"], name: "index_exercise_sets_on_routine_id"
     t.index ["workout_id"], name: "index_exercise_sets_on_workout_id"
   end
 
@@ -69,6 +71,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_21_141746) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "routines", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_routines_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

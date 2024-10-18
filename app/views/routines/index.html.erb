@@ -1,0 +1,29 @@
+<div class="md:container mx-auto py-16">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <% content_for :title, "Routines" %>
+
+  <div class="text-center">
+      <p class="text-white ml-4 font-bold font-montserrat uppercase text-3xl sm:text-7xl">Routines</p>
+  </div>
+
+  <div class="flex justify-center">
+    <div class="w-[500px] mt-4 grid grid-flow-col justify-stretch gap-4">
+        <%= link_to "New routine", new_routine_path, class: "btn btn-primary" %>
+        <%= link_to "Popular Routines", new_routine_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+
+  <div id="routines" class="min-w-full">
+    <% @routines.each do |routine| %>
+      <%= render routine %>
+      <p>
+        <%= link_to "Show this routine", routine, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      </p>
+    <% end %>
+  </div>
+</div>
