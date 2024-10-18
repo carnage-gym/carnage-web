@@ -1,27 +1,24 @@
-<div class="mx-auto w-auto p-16">
-<div class="mx-auto text-center flex items-center justify-center">
-  <img src="/assets/icon.png" class="w-[30px] sm:w-[80px]"></img>
-  <p class="text-white ml-4 font-bold font-montserrat uppercase text-3xl sm:text-7xl">Logbook</p>
-</div>
-<br>
-
-<div class="md:container">
-<div class="mx-2 text-white bg-carnage-secondary p-6 font-montserrat mt-2 rounded-3xl">
-    <div class="overflow-auto max-h-44">
-      <%= turbo_frame_tag "workouts" do %>
-        <% if current_user.workouts.count > 0 %>
-          <%= render partial: "workouts/workout", collection: @workouts %>
-        <% else %>
-          <p class="font-semibold text-2xl">No workouts found!</p>
-          <p class="ml-2">Added workouts will appear here.</p>
-        <% end %>
-      <% end %>
+<div class="md:container mx-auto w-auto p-16">
+    <div class="mx-auto text-center flex items-center justify-center">
+        <p class="text-white ml-4 font-bold font-montserrat uppercase text-3xl sm:text-7xl">Logbook</p>
     </div>
-    <% if @user == current_user %>
-        <div class="inline-flex align-bottom gap-3 mt-3 border-t-4 border-carnage-red w-full">
-        <!--<button class="bg-red-300 text-slate-100 text-center p-1 rounded-xl">See more</button> -->
+    <br>
+
+    <div class="mx-2 text-white bg-neutral p-6 font-montserrat mt-2 rounded-3xl">
+        <div class="overflow-auto max-h-44">
+        <%= turbo_frame_tag "workouts" do %>
+            <% if current_user.workouts.count > 0 %>
+            <%= render partial: "workouts/workout", collection: @workouts %>
+            <% else %>
+            <p class="font-semibold text-2xl">No workouts found!</p>
+            <p class="ml-2">Added workouts will appear here.</p>
+            <% end %>
+        <% end %>
         </div>
-    <% end %>
-  </div>
-</div>
+        <% if @user == current_user %>
+            <div class="inline-flex align-bottom gap-3 mt-3 border-t-4 border-accent w-full">
+            <!--<button class="bg-red-300 text-slate-100 text-center p-1 rounded-xl">See more</button> -->
+            </div>
+        <% end %>
+    </div>
 </div>

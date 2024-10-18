@@ -1,21 +1,33 @@
-<nav class="h-12 mt-4 mx-12">
-  <div class="flex h-full border-b-2 border-accent justify-between items-center">
+<nav class="navbar bg-neutral">
+    <div class="flex w-full justify-between">
+      <%= link_to "carnage", "/", class: "font-montserrat hover:text-primary text-xl btn btn-ghost uppercase" %>
+      <% if user_signed_in? %>
+        <div class="flex">
+            <%= link_to "list_alt", logbook_path, class: "btn btn-ghost md:text-2xl hover:text-primary material-symbols-outlined" %>
+            <%= link_to "fitness_center", logbook_path, class: "btn btn-ghost md:text-2xl hover:text-primary material-symbols-outlined" %>
+        </div>
 
-    <% if user_signed_in? %>
-      <div class="flex gap-4 sm:gap-10">
-        <%= link_to "home", '/', class: "md:text-3xl text-primary material-symbols-outlined" %>
-        <%= link_to "list_alt", logbook_path, class: "md:text-3xl text-primary material-symbols-outlined" %>
-        <%# <%= link_to "fitness_center", routines_path, class: "md:text-3xl text-primary material-symbols-outlined" %>
+        <div class="dropdown dropdown-end">
+              <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                <div class="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src="https://cdn0.iconfinder.com/data/icons/flat-round-system/512/archlinux-512.png" />
+                </div>
+              </div>
+              <ul
+                tabindex="0"
+                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                <li>
+                    <%= link_to "Profile", logbook_path %>
+                </li>
+                <li><a>Settings</a></li>
+                <li>
+                    <div><%= button_to "Log Out", destroy_user_session_path, method: :delete, class:"aa" %></div>
+                </li>
+              </ul>
+            </div>
 
-      </div>
-      <div class="flex gap-5 sm:gap-10">
-          <%= link_to "settings", routines_path, class: "md:text-3xl text-primary material-symbols-outlined" %>
-
-          <%= button_to "logout", destroy_user_session_path, method: :delete, class: "md:text-3xl text-primary material-symbols-outlined" %>
-      </div>
-    <% else %>
-      <%= link_to "home", '/', class: "md:text-3xl text-primary material-symbols-outlined" %>
-      <%= link_to "person", new_user_session_path, class: "md:text-3xl text-primary material-symbols-outlined" %>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 </nav>
