@@ -1,11 +1,11 @@
 <div class="md:container px-4 mx-auto">
   <h1 class="text-6xl font-bold text-slate-100 text-center">Workouts</h1>
-  
+
   <div class="gap-4 mx-auto flex justify-center">
     <% @workouts.each do |workout| %>
       <div class="max-w-md my-4 bg-slate-900 rounded-b-lg text-center">
         <p class="bg-red-500 rounded-t-lg font-bold text-slate-100"><%= workout.title %></p>
-        <p class="m-1 text-slate-100">Bro made an empty workout :skull:</p>  
+        <p class="m-1 text-slate-100">Bro made an empty workout :skull:</p>  <!-- What the fuck is this. -->
 
         <div class="inline-flex items-baseline">
         <%= button_to "Edit", edit_workout_path(workout), method: :get, class: "text-slate-100 px-8" %>

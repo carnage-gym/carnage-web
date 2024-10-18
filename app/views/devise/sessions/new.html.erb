@@ -1,40 +1,39 @@
-<div class="bg-carnage-secondary container p-6 text-center font-montserrat mx-auto md:w-[500px] rounded-3xl">
+<div class="container mx-auto p-16 rounded-3xl">
   <div class="mx-auto text-center flex items-center justify-center">
-    <img src="/assets/icon.png" class="w-[30px] sm:w-[60px]"></img>
-    <p class="text-white ml-4 font-bold font-montserrat text-3xl sm:text-5xl">Sign In</p>
+    <p class="text-white uppercase font-montserrat ml-4 font-bold text-3xl sm:text-5xl">Sign In</p>
   </div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="grid grid-cols-5 gap-4 mt-4 items-center">
-      <%= f.label :email, class: "text-white font-semibold text-left" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-carnage-main col-span-4 rounded-3xl text-white border-none" %>
+      <%= f.label :email, class: "text-white font-semibold" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-neutral col-span-4 rounded-3xl text-white border-none" %>
 
-      <%= f.label :password, class: "text-white font-semibold text-left" %>
-      <%= f.password_field :password, autocomplete: "current-password", class: "bg-carnage-main col-span-4 rounded-3xl text-white border-none" %>
+      <%= f.label :password, class: "text-white font-semibold" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "bg-neutral col-span-4 rounded-3xl text-white border-none" %>
     </div>
 
     <div>
       <% if devise_mapping.rememberable? %>
-        <div class="text-white font-semibold mt-4 justify-center gap-2 flex items-center">
+        <div class="font-semibold mt-4 justify-center gap-2 flex items-center">
           <%= f.check_box :remember_me %>
           <%= f.label :remember_me %>
         </div>
       <% end %>
     </div>
 
-    <div class="bg-carnage-main mt-4 text-white font-semibold rounded-lg p-4 text-left">
+    <div class="bg-neutral mt-4 text-white font-semibold rounded-lg p-4">
       <div class="flex gap-1">
         <p>Don't have an account?</p>
-        <%= link_to "Sign up!", new_user_registration_path, class: "text-carnage-red hover:text-carnage-red-pressed" %>
+        <%= link_to "Sign up!", new_user_registration_path, class: "text-secondary" %>
       </div>
 
       <div class="flex gap-1">
         <p>Forgot your password?</p>
-        <%= link_to "Reset it!", new_user_password_path, class: "text-carnage-red hover:text-carnage-red-pressed" %>
+        <%= link_to "Reset it!", new_user_password_path, class: "text-secondary" %>
       </div>
     </div>
 
-    <%= f.submit "Log in", class: "mt-10 rounded-3xl w-full hover:bg-carnage-red-pressed font-semibold transition ease-in-out py-2 w-44 text-center text-white bg-carnage-red text-lg" %>
+    <%= f.submit "Log in", class: "btn btn-primary w-full my-8" %>
   <% end %>
 
 </div>

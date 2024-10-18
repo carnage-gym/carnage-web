@@ -1,34 +1,33 @@
-<div class="bg-carnage-secondary p-6 text-center font-montserrat mx-auto md:w-[500px] rounded-3xl">
+<div class="container p-16 text-center mx-auto rounded-3xl">
   <div class="mx-auto text-center flex items-center justify-center">
-    <img src="/assets/icon.png" class="w-[30px] sm:w-[60px]"></img>
-    <p class="text-white ml-4 font-bold font-montserrat text-3xl sm:text-5xl">Sign Up</p>
+    <p class="text-white font-montserrat ml-4 font-bold uppercase text-3xl sm:text-5xl">Sign Up</p>
   </div>
 
-  <%= render 'devise/shared/error_messages', resources: resource %>
+  <%= render 'devise/shared/error_messages', resources: resource, class: "" %>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <div class="grid grid-cols-5 gap-4 mt-4 items-center">
       <%= f.label :email, class: "text-white font-semibold text-left" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-carnage-main col-span-4 rounded-3xl text-white border-none" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-neutral col-span-4 rounded-3xl text-white border-none" %>
 
       <%= f.label :password, class: "text-white font-semibold text-left" %>
-      <%= f.password_field :password, autocomplete: "new-password", class: "new-password bg-carnage-main col-span-4 rounded-3xl text-white border-none" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "bg-neutral col-span-4 rounded-3xl text-white border-none" %>
 
       <%= f.label :username, class: "text-white font-semibold text-left" %>
-      <%= f.text_field :username, class: "bg-carnage-main col-span-4 rounded-3xl text-white border-none" %>
+      <%= f.text_field :username, class: "bg-neutral col-span-4 rounded-3xl text-white border-none" %>
 
       <%= f.label :Confirm, class: "text-white font-semibold text-left" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "bg-carnage-main col-span-4 rounded-3xl text-white border-none" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "bg-neutral col-span-4 rounded-3xl text-white border-none" %>
     </div>
 
-    <div class="bg-carnage-main mt-4 text-white font-semibold rounded-lg p-4 text-left">
+    <div class="bg-neutral mt-4 text-white font-semibold rounded-lg p-4 text-left">
       <div class="flex gap-1">
         <p>Already have an account?</p>
-        <%= link_to "Sign in!", new_user_session_path, class: "text-carnage-red hover:text-carnage-red-pressed" %>
+        <%= link_to "Sign in!", new_user_session_path, class: "text-secondary" %>
       </div>
     </div>
 
-    <%= f.submit "Sign up", class: "mt-10 rounded-3xl w-full hover:bg-carnage-red-pressed font-semibold transition ease-in-out py-2 w-44 text-center text-white bg-carnage-red text-lg" %>
+    <%= f.submit "Sign up", class: "btn btn-primary w-full mt-8" %>
 
   <% end %>
 

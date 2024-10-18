@@ -1,20 +1,21 @@
 <nav class="h-12 mt-4 mx-12">
-  <div class="flex h-full border-b-2 border-white justify-between items-center">
+  <div class="flex h-full border-b-2 border-accent justify-between items-center">
+
     <% if user_signed_in? %>
       <div class="flex gap-4 sm:gap-10">
-        <%= link_to "home", '/', class: "md:text-3xl hover:text-carnage-red-pressed material-symbols-outlined text-carnage-red" %>
-        <%= link_to "list_alt", logbook_path, class: "md:text-3xl hover:text-carnage-red-pressed material-symbols-outlined text-carnage-red" %>
-        <%# <%= link_to "fitness_center", routines_path, class: "md:text-3xl hover:text-carnage-red-pressed material-symbols-outlined text-carnage-red" %> %>
+        <%= link_to "home", '/', class: "md:text-3xl text-primary material-symbols-outlined" %>
+        <%= link_to "list_alt", logbook_path, class: "md:text-3xl text-primary material-symbols-outlined" %>
+        <%# <%= link_to "fitness_center", routines_path, class: "md:text-3xl text-primary material-symbols-outlined" %>
 
       </div>
       <div class="flex gap-5 sm:gap-10">
-          <%= link_to "settings", routines_path, class: "md:text-3xl hover:text-carnage-red-pressed material-symbols-outlined text-carnage-red" %>
+          <%= link_to "settings", routines_path, class: "md:text-3xl text-primary material-symbols-outlined" %>
 
-          <%= button_to "logout", destroy_user_session_path, method: :delete, class: "md:text-3xl hover:text-carnage-red-pressed material-symbols-outlined text-carnage-red" %>
+          <%= button_to "logout", destroy_user_session_path, method: :delete, class: "md:text-3xl text-primary material-symbols-outlined" %>
       </div>
     <% else %>
-      <%= link_to "home", '/', class: "md:text-3xl hover:text-carnage-red-pressed material-symbols-outlined text-carnage-red" %>
-      <%= link_to "person", new_user_session_path, class: "md:text-3xl hover:text-carnage-red-pressed material-symbols-outlined text-carnage-red" %>
+      <%= link_to "home", '/', class: "md:text-3xl text-primary material-symbols-outlined" %>
+      <%= link_to "person", new_user_session_path, class: "md:text-3xl text-primary material-symbols-outlined" %>
     <% end %>
   </div>
 </nav>
