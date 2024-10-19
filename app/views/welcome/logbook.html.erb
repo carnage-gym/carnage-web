@@ -6,14 +6,12 @@
 
     <div class="mx-2 text-white bg-neutral p-6 font-montserrat mt-2 rounded-3xl">
         <div class="overflow-auto max-h-44">
-        <%= turbo_frame_tag "workouts" do %>
             <% if current_user.workouts.count > 0 %>
             <%= render partial: "workouts/workout", collection: @workouts %>
             <% else %>
             <p class="font-semibold text-2xl">No workouts found!</p>
             <p class="ml-2">Added workouts will appear here.</p>
             <% end %>
-        <% end %>
         </div>
         <% if @user == current_user %>
             <div class="inline-flex align-bottom gap-3 mt-3 border-t-4 border-accent w-full">

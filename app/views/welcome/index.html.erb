@@ -1,28 +1,29 @@
   <div class="md:container mx-auto pt-16">
-      <div class="pb-16">
-        <div class="text-center">
-            <p class="text-white ml-4 font-bold font-montserrat uppercase text-6xl sm:text-8xl">Carnage</p>
+    <div class="text-center">
+        <p class="text-white ml-4 font-bold font-montserrat uppercase text-6xl sm:text-8xl">Carnage</p>
+    </div>
+    <br>
+    <div class="mx-auto justify-center flex gap-5 sm:gap-10 font-montserrat font-semibold">
+    <% if user_signed_in? %>
+        <div class="w-[500px] grid grid-flow-col justify-stretch gap-4">
+            <%= link_to "Logbook", logbook_path(id: current_user.id), class: "btn btn-primary" %>
+            <%= link_to "Routines", routines_path, class: "btn btn-secondary" %>
         </div>
-        <br>
-        <div class="mx-auto justify-center flex gap-5 sm:gap-10 font-montserrat font-semibold">
-        <% if user_signed_in? %>
-            <div class="w-[500px] grid grid-flow-col justify-stretch gap-4 mt-4">
-                <%= link_to "Logbook", logbook_path(id: current_user.id), class: "btn btn-primary" %>
-                <%= link_to "Routines", logbook_path(id: current_user.id), class: "btn btn-secondary" %>
+    <% else %>
+        <div class="w-[500px]">
+            <p class="text-white py-2 text-center rounded-3xl font-montserrat font-semibold outline-dashed outline-accent">New here? Feel free to check out #about</p>
+            <div class="grid grid-flow-col justify-stretch gap-4">
+                <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary" %>
+                <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-secondary" %>
             </div>
-        <% else %>
-            <div class="w-[500px]">
-                <p class="text-white py-2 text-center rounded-3xl font-montserrat font-semibold outline-dashed outline-accent">New here? Feel free to check out #about</p>
-                <div class="grid grid-flow-col justify-stretch gap-4 mt-4">
-                    <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary" %>
-                    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-secondary" %>
-                </div>
-            </div>
-        <% end %>
         </div>
+    <% end %>
+    </div>
 
-        <div class="divider"></div>
-        <p class="text-primary font-montserrat md:text-4xl text-2xl font-extrabold mb-1">Carnage: Progress Intelligently</p>
+    <div class="divider"></div>
+    <p class="text-primary font-montserrat md:text-4xl text-2xl font-extrabold mb-1">Carnage: Progress Intelligently</p>
+
+    <div class="px-2">
         <p class="text-justify">
             Throughout all my years as a dedicated lifter, I have used several methods of logging my workouts — from spreadsheets, to supposedly "amazing" workout apps.
             However, I found that most either lacked robust features or provided their users with outright false information, namely on training volume, intensity and so on.
@@ -31,7 +32,8 @@
         <br>
         <p>
             Fixing all those problems is the very purpose of carnage. So, let's get on with it!
-             [INSERT FUTURE IMAGE]
+                [INSERT FUTURE IMAGE]
         </p>
     </div>
+
 </div>
