@@ -5,11 +5,11 @@
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="grid grid-cols-5 gap-4 mt-4 items-center">
-      <%= f.label :email, class: "text-white font-semibold" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input bg-neutral col-span-4 rounded-3xl text-white" %>
+      <%= f.label :email, class: "font-semibold" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input bg-neutral col-span-4 rounded-3xl" %>
 
-      <%= f.label :password, class: "text-white font-semibold" %>
-      <%= f.password_field :password, autocomplete: "current-password", class: "input bg-neutral col-span-4 rounded-3xl text-white" %>
+      <%= f.label :password, class: "font-semibold" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "input bg-neutral col-span-4 rounded-3xl" %>
     </div>
 
     <div>
@@ -21,15 +21,15 @@
       <% end %>
     </div>
 
-    <div class="bg-neutral mt-4 text-white font-semibold rounded-lg p-4">
+    <div class="bg-neutral mt-4 font-semibold rounded-lg p-4">
       <div class="flex gap-1">
         <p>Don't have an account?</p>
-        <%= link_to "Sign up!", new_user_registration_path, class: "text-accent" %>
+        <%= link_to "Sign up", new_user_registration_path, class: "text-accent" %>
       </div>
 
       <div class="flex gap-1">
         <p>Forgot your password?</p>
-        <%= link_to "Reset it!", new_user_password_path, class: "text-accent" %>
+        <%= link_to "Reset it", new_user_password_path, class: "text-accent" %>
       </div>
     </div>
 
