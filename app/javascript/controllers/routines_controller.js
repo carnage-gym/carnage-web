@@ -1,15 +1,19 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["dialog"];
+  static targets = ["modal"];
 
   connect() {
     console.log("Hello, Stimulus!", this.element);
   }
 
   show() {
-    console.log("been triggered");
-    const dialog = this.dialogTarget;
+    const dialog = this.modalTarget;
     dialog.showModal();
+  }
+
+  close() {
+    const dialog = this.modalTarget;
+    dialog.close();
   }
 }

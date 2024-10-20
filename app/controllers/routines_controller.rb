@@ -1,5 +1,5 @@
 class RoutinesController < ApplicationController
-  before_action :set_routine, only: %i[ show edit update destroy ]
+  before_action :set_routine, only: %i[ show edit update destroy add_exercise ]
   before_action :authenticate_user!
 
   # GET /routines or /routines.json
@@ -41,7 +41,8 @@ class RoutinesController < ApplicationController
       if @routine.update(routine_params)
         format.html { redirect_to @routine, notice: "Routine was successfully updated." }
         format.json { render :show, status: :ok, location: @routine }
-      else
+        format.turbo_stream { }
+    else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @routine.errors, status: :unprocessable_entity }
       end
@@ -55,6 +56,17 @@ class RoutinesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to routines_path, status: :see_other, notice: "Routine was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def add_exercise
+    exercise = Exercise.find(params[:id])
+    @routine.exercises.add(exercise)
+
+    if @routine.save(routine_params)
+      render edit_routines_path(routine, notice: "good job!")
+    else
+      render edit_routines_path(routine, notice: "no.")
     end
   end
 

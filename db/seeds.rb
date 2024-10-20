@@ -17,6 +17,7 @@ delts = MuscleGroup.find_or_create_by!(name: "Delts")
 chest = MuscleGroup.find_or_create_by!(name: "Chest")
 hamstrings = MuscleGroup.find_or_create_by!(name: "Hamstring")
 glutes = MuscleGroup.find_or_create_by!(name: "Glutes")
+triceps = MuscleGroup.find_or_create_by!(name: "Triceps")
 
 
 # Exercises from my pull day lmfao
@@ -89,6 +90,22 @@ Exercise.create!([{
     description: "",
     emphasis: "Hamstrings",
     muscle_groups: [hamstrings, glutes],
+    user_id: 1,
+    exerciseType: Exercise::WEIGHT_REPS
+  },
+  {
+    name: "45s",
+    description: "",
+    emphasis: "Hamstrings, Glutes",
+    muscle_groups: [hamstrings, glutes],
+    user_id: 1,
+    exerciseType: Exercise::WEIGHT_REPS
+  },
+  {
+    name: "JM Press",
+    description: "",
+    emphasis: "Triceps",
+    muscle_groups: [triceps],
     user_id: 1,
     exerciseType: Exercise::WEIGHT_REPS
   }

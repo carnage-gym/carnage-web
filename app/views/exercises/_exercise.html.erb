@@ -1,44 +1,12 @@
-<%= turbo_frame_tag dom_id(exercise, :edit) do %>
-  <div class="bg-carnage-secondary text-white mb-2 p-4 rounded-2xl font-montserrat">
-    <div class="flex justify-between">    <!--Image in the future-->
-      <p class="font-semibold"><%= exercise.name %></p>
-
-      <% if is_workout %>
-        <div class="gap-5 flex">
-            <%= button_to "X", workout_remove_exercise_path(exercise_id: exercise.id, workout_id: params[:workout_id] || params[:id]), method: :delete,
-            class: "rounded-3xl font-semibold transition ease-in-out
-                    text-center text-white hover:text-carnage-red-pressed" %>
-        </div>
-        <% else %>
+<%= turbo_frame_tag dom_id(exercise, :edit), class: "contents" do %>
+  <div class="p-2">
+      <div class="flex justify-between items-center">
+          <p><%= exercise.name %></p>
+          <div>
             <%= yield %>
-      <% end %>
-    </div>
+          </div>
 
-    <% exercise.muscle_groups.each do |mg| %>
-      <p class="ml-2 text-sm"><%= mg.name %></p>
-    <% end %>
-
-    <% if exercise.emphasis.presence %>
-      <p class="ml-2 text-sm"> (<%= exercise.emphasis %>)</p>
-    <% end %>
-
-    <div class="gap-2 mt-2 ml-2 text-center">
-      <% if is_workout %>
-          <% if exercise.exerciseType == Exercise::WEIGHT_REPS %>
-            <%= turbo_frame_tag dom_id(exercise, "sets") do %>
-              <% ExerciseSet.where(workout_id: params[:id], exercise_id: exercise.id).each do |x| %>
-                <%= render x %>
-              <% end %>
-            <% end %>
-
-          <%= button_to "+ Add set", exercise_exercise_sets_path(exercise_id: exercise.id, workout_id: params[:workout_id] || params[:id]),
-            class: "mt-5 rounded-3xl font-semibold hover:bg-carnage-red-pressed transition ease-in-out py-2 px-8
-                text-center text-white text-sm bg-carnage-red" %>
-          <% end %>
-
-      <% else %>
-        <%= yield %>
-      <% end %>
-    </div>
+      </div>
+      <p class="text-gray-500 text-sm px-2"><%= exercise.emphasis %></p>
   </div>
 <% end %>
