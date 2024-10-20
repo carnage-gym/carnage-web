@@ -15,7 +15,7 @@
     <div>
       <% if devise_mapping.rememberable? %>
         <div class="font-semibold mt-4 justify-center gap-2 flex items-center">
-          <%= f.check_box :remember_me, class: "text-accent" %>
+          <%= f.check_box :remember_me, class: "text-secondary" %>
           <%= f.label :remember_me %>
         </div>
       <% end %>
@@ -24,12 +24,12 @@
     <div class="bg-neutral mt-4 font-semibold rounded-lg p-4">
       <div class="flex gap-1">
         <p>Don't have an account?</p>
-        <%= link_to "Sign up", new_user_registration_path, class: "text-accent" %>
+        <%= link_to "Sign up", new_user_registration_path, class: "text-secondary" %>
       </div>
 
       <div class="flex gap-1">
         <p>Forgot your password?</p>
-        <%= link_to "Reset it", new_user_password_path, class: "text-accent" %>
+        <%= link_to "Reset it", new_user_password_path, class: "text-secondary" %>
       </div>
     </div>
 

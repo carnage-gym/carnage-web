@@ -1,8 +1,7 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing routine</h1>
+<div class="md:container mx-auto w-full pt-16">
+    <div class="text-center">
+        <p class="text-white ml-4 font-bold font-montserrat uppercase text-6xl sm:text-7xl">Edit "<%= @routine.name %>"</p>
+    </div>
 
   <%= render "form", routine: @routine %>
-
-  <%= link_to "Show this routine", @routine, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to routines", routines_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>

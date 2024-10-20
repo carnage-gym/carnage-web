@@ -2,7 +2,7 @@
   <p class="font-semibold"><%= routine.name %></p>
 
   <div class="flex">
-    <%= link_to "edit", edit_routine_path(routine), class: "btn btn-circle hover:text-accent btn-ghost btn-xs text-[16px] material-symbols-outlined" %>
+    <%= link_to "edit", edit_routine_path(routine), class: "btn btn-circle hover:text-secondary btn-ghost btn-xs text-[16px] material-symbols-outlined" %>
     <%= button_to "delete", routine_path(routine), method: :delete, class: "btn btn-circle hover:text-error btn-ghost btn-xs text-[16px] material-symbols-outlined" %>
   </div>
 </div>
