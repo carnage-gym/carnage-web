@@ -14,25 +14,13 @@ class RoutinesController < ApplicationController
   # GET /routines/new
   def new
     @routine = current_user.routines.new
+    @routine.save(name: "my routine")
+
+    redirect_to edit_routine_path(@routine)
   end
 
   # GET /routines/1/edit
   def edit
-  end
-
-  # POST /routines or /routines.json
-  def create
-    @routine = current_user.routines.new(routine_params)
-
-    respond_to do |format|
-      if @routine.save
-        format.html { redirect_to @routine, notice: "Routine was successfully created." }
-        format.json { render :show, status: :created, location: @routine }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @routine.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /routines/1 or /routines/1.json
@@ -60,20 +48,20 @@ class RoutinesController < ApplicationController
   end
 
   def add_exercise
-    exercise = Exercise.find(params[:id])
-    @routine.exercises.add(exercise)
+    exercise = Exercise.find(params[:exercise_id])
+    @routine.exercises << exercise
 
-    if @routine.save(routine_params)
-      render edit_routines_path(routine, notice: "good job!")
+    if @routine.save
+      redirect_to edit_routine_path(@routine, notice: "good job!")
     else
-      render edit_routines_path(routine, notice: "no.")
+      redirect_to edit_routine_path(@routine, notice: "no.")
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_routine
-      @routine = Routine.find(params[:id])
+      @routine = Routine.find(params[:id] || params[:routine_id])
     end
 
     # Only allow a list of trusted parameters through.

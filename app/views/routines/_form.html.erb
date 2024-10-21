@@ -22,7 +22,17 @@
 
     <div class="divider"></div>
 
-    <div class="flex justify-center gap-4">
+    <p class="text-primary font-montserrat md:text-4xl text-2xl font-extrabold mb-1">Exercises</p>
+    <div class="w-full rounded-xl overflow-auto max-h-[24rem] bg-neutral p-2">
+        <% for ex in routine.exercises %>
+            <%= render ex do %>
+                <div></div>
+            <% end %>
+        <% end %>
+    </div>
+
+
+    <div class="flex justify-center gap-4 mt-4">
         <%= form.submit "Save changes", class: "btn btn-primary btn-wide" %>
         <button data-action="click->routines#show" type="button" class="btn btn-wide btn-accent">Add Exercise</button>
         <%= link_to "Back to routines", routines_path, class: "btn btn-secondary btn-wide" %>
@@ -35,7 +45,7 @@
           <div class="overflow-auto max-h-[30rem]">
             <% for ex in Exercise.all %>
               <%= render ex do %>
-                <%= button_to "+", routine_add_exercise_path(params[:id] , exercise_id: ex.id ), method: :patch, class: "btn btn-xs btn-circle btn-primary" %>
+                <%= button_to "+", routine_add_exercise_path(params[:id], exercise_id: ex.id ), method: :patch, class: "btn btn-xs btn-circle btn-primary" %>
               <% end %>
             <% end %>
           </div>
