@@ -1,5 +1,5 @@
 class RoutinesController < ApplicationController
-  before_action :set_routine, only: %i[ show edit update destroy add_exercise ]
+  before_action :set_routine, only: %i[ show edit update destroy add_exercise remove_exercise ]
   before_action :authenticate_user!
 
   # GET /routines or /routines.json
@@ -56,6 +56,20 @@ class RoutinesController < ApplicationController
         format.html { redirect_to edit_routine_path(@routine), status: :success }
         format.turbo_stream { render turbo_stream: turbo_stream.append(:exercises,
           partial: "exercises/exercise", locals: { exercise: exercise }) }
+      end
+    else
+      redirect_to edit_routine_path(@routine, notice: "no.")
+    end
+  end
+
+  def remove_exercise
+    exercise = Exercise.find(params[:exercise_id])
+    @routine.exercises.delete(exercise)
+
+    if @routine.save
+      respond_to do |format|
+        format.html { redirect_to edit_routine_path(@routine), status: :success }
+        format.turbo_stream { render turbo_stream: turbo_stream.remove("edit_exercise_#{exercise.id}") }
       end
     else
       redirect_to edit_routine_path(@routine, notice: "no.")

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :routines do
     patch 'edit/add_exercise', to: "routines#add_exercise", as: "add_exercise"
+    patch 'edit/remove_exercise', to: "routines#remove_exercise", as: "remove_exercise"
   end
 
 

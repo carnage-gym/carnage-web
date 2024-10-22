@@ -29,7 +29,9 @@
           <%= turbo_frame_tag "exercises" do %>
             <% for ex in routine.exercises %>
               <%= render ex do %>
-                <div></div>
+                <div>
+                  <%= button_to "delete", routine_remove_exercise_path(params[:id], exercise_id: ex.id), method: :patch, class: "material-symbols-outlined btn btn-xs btn-ghost btn-circle hover:text-error" %>
+                </div>
               <% end %>
             <% end %>
           <% end %>
