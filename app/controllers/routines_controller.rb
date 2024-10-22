@@ -52,7 +52,11 @@ class RoutinesController < ApplicationController
     @routine.exercises << exercise
 
     if @routine.save
-      redirect_to edit_routine_path(@routine, notice: "good job!")
+      respond_to do |format|
+        format.html { redirect_to edit_routine_path(@routine), status: :success }
+        format.turbo_stream { render turbo_stream: turbo_stream.append(:exercises,
+          partial: "exercises/exercise", locals: { exercise: exercise }) }
+      end
     else
       redirect_to edit_routine_path(@routine, notice: "no.")
     end
