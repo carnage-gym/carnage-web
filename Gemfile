@@ -73,7 +73,7 @@ gem "tailwindcss-rails", "~> 3.0"
 gem "devise"
 gem "view_component"
 
-gem "faker", "~> 3.4"
+gem "faker", "~> 3.5"
 gem "htmlbeautifier"
 
 gem "devise-api", "~> 0.2.0"
