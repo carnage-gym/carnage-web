@@ -27,9 +27,9 @@ class RoutinesController < ApplicationController
   def update
     respond_to do |format|
       if @routine.update(routine_params)
-        format.html { redirect_to @routine, notice: "Routine was successfully updated." }
+        format.html { redirect_to routines_path, notice: "Routine was successfully updated.", notice: "Routine was successfully updated." }
         format.json { render :show, status: :ok, location: @routine }
-        format.turbo_stream { }
+        format.turbo_stream { redirect_to routines_path, notice: "Routine was successfully updated." }
     else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @routine.errors, status: :unprocessable_entity }
@@ -49,8 +49,9 @@ class RoutinesController < ApplicationController
 
   def add_exercise
     exercise = Exercise.find(params[:exercise_id])
+    exercise.exercise_sets.new(intensity: 1, routine_id: @routine.id, weight: 0, reps: 0)
     @routine.exercises << exercise
-
+    
     if @routine.save
       respond_to do |format|
         format.html { redirect_to edit_routine_path(@routine), status: :success }
