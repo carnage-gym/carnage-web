@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-  before_action :authenticate_user!, :find, only: [:destroy, :show, :edit, :update]
+  before_action :authenticate_user!, :find, only: %i[destroy show edit update]
   def index
     @workouts = current_user.workouts
   end
@@ -10,17 +10,17 @@ class WorkoutsController < ApplicationController
     # This is needed in order to circumvent errors.
     @workout.exercises.map { |e| e.exercise_sets.destroy_all }
 
-    if @workout.destroy
-      respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.remove("workout_#{id}")}
-        format.html { redirect_to logbook_path(id: params[:user_id]) }
-      end
+    return unless @workout.destroy
+
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove("workout_#{id}") }
+      format.html { redirect_to logbook_path(id: params[:user_id]) }
     end
   end
 
   def create
     @workout = current_user.workouts.new(workout_params)
-    if @workout.save then redirect_back(fallback_location: '/') end
+    redirect_back(fallback_location: '/') if @workout.save
   end
 
   def show
@@ -32,19 +32,19 @@ class WorkoutsController < ApplicationController
       ex.exercise_sets.build
     end
 
-    if current_user != @workout.user then not_found!("Not found") end
+    not_found!('Not found') if current_user != @workout.user
   end
 
   def update
-    if @workout.update(workout_params)
-      # redirect_to workouts_path
-      @exercises = params[:workout][:exercise_ids].map { |ex| Exercise.find(ex)}
+    return unless @workout.update(workout_params)
 
-      # exercise added
-      respond_to do |format|
-        format.html { redirect_to edit_workout_path(params[:id]) }
-        format.turbo_stream
-      end
+    # redirect_to workouts_path
+    @exercises = params[:workout][:exercise_ids].map { |ex| Exercise.find(ex) }
+
+    # exercise added
+    respond_to do |format|
+      format.html { redirect_to edit_workout_path(params[:id]) }
+      format.turbo_stream
     end
   end
 
@@ -53,13 +53,13 @@ class WorkoutsController < ApplicationController
   end
 
   def find
-    if params[:id]
-      @workout = Workout.find(params[:id])
-    end
+    return unless params[:id]
+
+    @workout = Workout.find(params[:id])
   end
 
   def not_found!(msg)
-    raise ActionController::RoutingError.new(msg)
+    raise ActionController::RoutingError, msg
   end
 
   def remove_exercise
@@ -69,27 +69,27 @@ class WorkoutsController < ApplicationController
     exercise.exercise_sets.where(workout_id: @workout.id).destroy_all
     @workout.exercises.delete(exercise)
 
-    if @workout.save
-      respond_to do |format|
-        format.html { redirect_back(fallback_location: '/') }
-        format.turbo_stream { render turbo_stream: turbo_stream.remove("edit_exercise_#{params[:exercise_id]}") }
-      end
+    return unless @workout.save
+
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: '/') }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove("edit_exercise_#{params[:exercise_id]}") }
     end
   end
-
 
   def add_exercise
     @workout = Workout.find(params[:workout_id])
     @exercise = Exercise.find(params[:exercise_id])
-
     @workout.exercises.append(@exercise)
 
-    if @workout.save
-      respond_to do |format|
-        format.html { redirect_back(fallback_location: '/') }
-        format.turbo_stream { render turbo_stream: turbo_stream.append("exercises", partial: "exercises/exercise", locals: {exercise: @exercise, is_workout: true})}
+    return unless @workout.save
+
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: '/') }
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.append('exercises', partial: 'exercises/exercise',
+                                                              locals: { exercise: @exercise, is_workout: true })
       end
     end
   end
-
 end

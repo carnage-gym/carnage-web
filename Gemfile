@@ -77,3 +77,5 @@ gem "faker", "~> 3.5"
 gem "htmlbeautifier"
 
 gem "devise-api", "~> 0.2.0"
+
+gem "ruby-lsp", "~> 0.20.1"

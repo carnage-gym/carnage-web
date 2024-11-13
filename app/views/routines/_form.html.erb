@@ -30,7 +30,7 @@
     <p class="text-primary font-montserrat md:text-4xl text-2xl font-extrabold mb-1">Exercises</p>
     <div class="bg-neutral p-2">
         <div class="w-full rounded-xl overflow-auto max-h-[24rem]">
-            <%= turbo_frame_tag "exercises" do %>
+            <%= turbo_frame_tag "exercises", class: "contents" do %>
                 <% for ex in routine.exercises %>
                     <%= render ex do %>
                         <%= button_to "delete", routine_remove_exercise_path(params[:id], exercise_id: ex.id), method: :patch, class: "material-symbols-outlined btn btn-xs btn-ghost btn-circle hover:text-error" %>
