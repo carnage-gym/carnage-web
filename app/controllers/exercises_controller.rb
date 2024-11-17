@@ -12,10 +12,9 @@ class ExercisesController < ApplicationController
 
   def create
     @exercise = current_user.exercises.new(exercise_params)
-    
-    if @exercise.save
-      redirect_to '/' 
-    end
+    return unless @exercise.save
+
+    redirect_to '/'
   end
 
   def exercise_params
@@ -26,23 +25,21 @@ class ExercisesController < ApplicationController
     @exercises = Exercise.all
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update 
-    if @exercise.update(exercise_params)
-      redirect_to exercises_path
-    end
+  def update
+    return unless @exercise.update(exercise_params)
+
+    redirect_to exercises_path
   end
 
   def destroy
     id = @exercise.id
-    if @exercise.destroy
-      respond_to do |format|
-        format.html { redirect_back(fallback_location: '/') }
-        format.turbo_stream {render turbo_stream: turbo_stream.remove("edit_exercise_#{id}")}
-      end
+    return unless @exercise.destroy
+
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: '/') }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove("edit_exercise_#{id}") }
     end
   end
-
 end

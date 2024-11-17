@@ -33,7 +33,7 @@
             <%= turbo_frame_tag "exercises", class: "contents" do %>
                 <% for ex in routine.exercises %>
                     <%= render ex do %>
-                        <%= button_to "delete", routine_remove_exercise_path(params[:id], exercise_id: ex.id), method: :patch, class: "material-symbols-outlined btn btn-xs btn-ghost btn-circle hover:text-error" %>
+                      <%= link_to "delete", routine_remove_exercise_path(params[:id], exercise_id: ex.id), data: { turbo_method: :patch }, class: "material-symbols-outlined btn btn-xs btn-ghost btn-circle hover:text-error" %>
                     <% end %>
                 <% end %>
             <% end %>
@@ -44,21 +44,17 @@
     <dialog data-routines-target="modal" class="modal">
       <div class="modal-box">
         <p class="font-bold text-primary text-xl">Add Exercises</p>
-
           <div class="overflow-auto max-h-[30rem]">
             <% for ex in Exercise.all %>
               <%= render ex do %>
-                  <%= button_to "+", routine_add_exercise_path(params[:id], exercise_id: ex.id ), method: :patch, class: "btn btn-xs btn-circle btn-primary" %>
-
+                <%= link_to "+", routine_add_exercise_path(params[:id], exercise_id: ex.id ), data: { turbo_method: :patch }, class: "btn btn-xs btn-circle btn-primary" %>
               <% end %>
             <% end %>
           </div>
-
         <div class="modal-action w-full">
             <button type="button" data-action="click->routines#close" class="btn btn-primary btn-sm w-full">Close</button>
         </div>
       </div>
     </dialog>
-
-    <% end %>
+  <% end %>
 </div>
