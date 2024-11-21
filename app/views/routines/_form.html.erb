@@ -1,10 +1,7 @@
 <div data-controller="routines">
   <%= form_with(model: routine, class: "contents h-full") do |form| %>
     <% if routine.errors.any? %>
-      <div
-        id="error_explanation"
-        class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3"
-      >
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
         <h2><%= pluralize(routine.errors.count, "error") %>
           prohibited this routine from being saved:</h2>
 
@@ -26,50 +23,36 @@
 
     <div class="flex justify-center gap-4 mt-4">
       <%= form.submit "Save changes", class: "btn btn-primary btn-wide btn-sm" %>
-      <%= link_to "Back to routines",
-      routines_path,
-      class: "btn btn-secondary btn-wide btn-sm" %>
+      <%= link_to "Back to routines", routines_path, class: "btn btn-secondary btn-wide btn-sm" %>
     </div>
 
     <span class="divider"></span>
 
-    <p
-      class="
-        text-primary font-montserrat md:text-4xl text-2xl font-extrabold mb-1
-      "
-    >Exercises</p>
+    <p class=" text-primary font-montserrat md:text-4xl text-2xl font-extrabold mb-1 ">Exercises</p>
     <div class="bg-neutral p-2">
       <div class="w-full rounded-xl overflow-auto max-h-[24rem]">
         <%= turbo_frame_tag "exercises", class: "contents" do %>
           <% for ex in routine.exercises %>
             <%= render ex do %>
-              <%= link_to "delete",
-              routine_remove_exercise_path(params[:id], exercise_id: ex.id),
-              data: {
-                turbo_method: :patch,
-              },
-              class:
-                "material-symbols-outlined btn btn-xs btn-ghost btn-circle hover:text-error" %>
+              <div class="flex gap-4">
+                <button type="button" class="btn btn-primary btn-sm">Manage sets</button>
 
-              <% for set in ExerciseSet.where(routine_id: params[:id], exercise_id: ex.id) %>
-                <%= fields_for :set_attributes, set do |f| %>
-                  <!-- TODO: implement this. -> <!-- Note: another turbo frame
-                  should not be necessary ->
-                <% end %>
-              <% end %>
+                <%= link_to "delete",
+                routine_remove_exercise_path(params[:id], exercise_id: ex.id),
+                data: {
+                  turbo_method: :patch,
+                },
+                class: "material-symbols-outlined btn btn-xs btn-ghost btn-circle hover:text-error" %>
+              </div>
 
             <% end %>
           <% end %>
         <% end %>
       </div>
-      <button
-        type="button"
-        data-action="click->routines#show"
-        class="btn mt-4 w-full btn-sm btn-primary"
-      >Add Exercise</button>
+      <button type="button" data-action="click->routines#show" class="btn mt-4 w-full btn-sm btn-primary">Add Exercise</button>
     </div>
 
-    <dialog data-routines-target="modal" class="modal">
+    <dialog data-routines-target="modal" class="modal backdrop:backdrop-blur-sm">
       <div class="modal-box">
         <p class="font-bold text-primary text-xl">Add Exercises</p>
         <div class="overflow-auto max-h-[30rem]">
@@ -85,11 +68,7 @@
           <% end %>
         </div>
         <div class="modal-action w-full">
-          <button
-            type="button"
-            data-action="click->routines#close"
-            class="btn btn-primary btn-sm w-full"
-          >Close</button>
+          <button type="button" data-action="click->routines#close" class="btn btn-primary btn-sm w-full">Close</button>
         </div>
       </div>
     </dialog>

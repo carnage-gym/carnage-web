@@ -3,21 +3,28 @@
     <p class="text-white font-montserrat ml-4 font-bold uppercase text-3xl sm:text-5xl">Sign Up</p>
   </div>
 
-  <%= render 'devise/shared/error_messages', resources: resource, class: "" %>
+  <%= render "devise/shared/error_messages", resources: resource, class: "" %>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <div class="grid grid-cols-5 gap-4 mt-4 items-center">
       <%= f.label :email, class: "text-white font-semibold text-left" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input bg-neutral col-span-4 rounded-3xl text-white" %>
+      <%= f.email_field :email,
+                    autofocus: true,
+                    autocomplete: "email",
+                    class: "input bg-neutral col-span-4 rounded-3xl text-white" %>
 
       <%= f.label :password, class: "text-white font-semibold text-left" %>
-      <%= f.password_field :password, autocomplete: "new-password", class: "input bg-neutral col-span-4 rounded-3xl text-white" %>
+      <%= f.password_field :password,
+                       autocomplete: "new-password",
+                       class: "input bg-neutral col-span-4 rounded-3xl text-white" %>
 
       <%= f.label :username, class: "text-white font-semibold text-left" %>
       <%= f.text_field :username, class: "input bg-neutral col-span-4 rounded-3xl text-white" %>
 
       <%= f.label :Confirm, class: "text-white font-semibold text-left" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input bg-neutral col-span-4 rounded-3xl text-white" %>
+      <%= f.password_field :password_confirmation,
+                       autocomplete: "new-password",
+                       class: "input bg-neutral col-span-4 rounded-3xl text-white" %>
     </div>
 
     <div class="bg-neutral mt-4 text-white font-semibold rounded-lg p-4 text-left">

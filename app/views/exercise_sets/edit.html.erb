@@ -2,7 +2,7 @@
   <%= form_with model: @set, url: exercise_exercise_set_path(exercise_id: @set.exercise.id, set_id: @set.id),
     data: { turbo_frame: dom_id(@set, :edit) },
     class: "flex justify-around" do |form| %>
-    
+
     <div class="flex gap-6 items-center text-sm">
       <div>
         <i class="fa fa-skull mr-2"></i>
@@ -18,8 +18,7 @@
         <%= form.number_field :reps, class: "w-16 bg-carnage-main rounded-3xl" %>
       </div>
     </div>
-  
-    
+
     <%= form.submit "✓", class: "fa fa-check hover:text-carnage-red-pressed" %>
   <% end %>
 <% end %>

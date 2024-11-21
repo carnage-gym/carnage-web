@@ -2,10 +2,27 @@
   <h1 class="text-6xl font-bold text-slate-100 text-center">About carnage</h1>
   <h3 class="text-3xl font-bold text-slate-600 text-center mt-3 mb-5">Discipline is the path to freedom.</h3>
   <div class="grid grid-flow-col gap-4 w-2/3 mx-auto">
-    <%= render(AboutPageFieldComponent.new(title: "What made you develop carnage?", contents: "Back when I started lifting (early 2021), I tried to look for a decent workot tracker. There are a few with decent features out there, they all suffer from the same problems: They either rely on old scientific literature or are all paid, which might not be very appealing to a lot of people. Carnage is my attempt at fixing that.")) %>
+    <%= render(
+      AboutPageFieldComponent.new(
+        title: "What made you develop carnage?",
+        contents:
+          "Back when I started lifting (early 2021), I tried to look for a decent workot tracker. There are a few with decent features out there, they all suffer from the same problems: They either rely on old scientific literature or are all paid, which might not be very appealing to a lot of people. Carnage is my attempt at fixing that.",
+      ),
+    ) %>
 
-    <%= render(AboutPageFieldComponent.new(title: "Who are you?", contents: "I am a Portuguese college student with a passion for bodybuilding (one could say I cannot live without the gym!) and, as such, I decided to make my own workout tracker based off of my own ideas + some borrowed from others I've used in the past.")) %>
+    <%= render(
+      AboutPageFieldComponent.new(
+        title: "Who are you?",
+        contents:
+          "I am a Portuguese college student with a passion for bodybuilding (one could say I cannot live without the gym!) and, as such, I decided to make my own workout tracker based off of my own ideas + some borrowed from others I've used in the past.",
+      ),
+    ) %>
 
-    <%= render(AboutPageFieldComponent.new(title: "What features does carnage have?", contents: "Pretty much everything other workout trackers have, with the exception of not having to pay for anything! However, contrary to most workout trackers, carnage is updated with the latest science (quality ALWAYS over quantity) and will take you to places no other workout tracker will ever do!")) %>
+    <%= render(
+      AboutPageFieldComponent.new(
+        title: "What features does carnage have?",
+        contents:
+          "Pretty much everything other workout trackers have, with the exception of not having to pay for anything! However, contrary to most workout trackers, carnage is updated with the latest science (quality ALWAYS over quantity) and will take you to places no other workout tracker will ever do!",
+      ),
+    ) %>
   </div>
-

@@ -1,12 +1,12 @@
 <%= turbo_frame_tag dom_id(exercise, :edit) do %>
   <div class="p-2">
-      <div class="flex justify-between items-center">
-          <p><%= exercise.name %></p>
-          <div>
-            <%= yield %>
-          </div>
-
+    <div class="flex justify-between items-center">
+      <p><%= exercise.name %></p>
+      <div>
+        <%= yield %>
       </div>
-      <p class="text-gray-500 text-sm px-2"><%= exercise.emphasis %></p>
+
+    </div>
+    <p class="text-gray-500 text-sm px-2"><%= exercise.emphasis %></p>
   </div>
 <% end %>
