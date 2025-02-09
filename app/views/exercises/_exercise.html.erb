@@ -1,12 +1,28 @@
 <%= turbo_frame_tag dom_id(exercise, :edit) do %>
-  <div class="p-2">
-    <div class="flex justify-between items-center">
-      <p><%= exercise.name %></p>
+  <div class="flex justify-between">
+    <div class="p-2">
       <div>
-        <%= yield %>
+        <div class="flex justify-between items-center">
+          <p><%= exercise.name %></p>
+        </div>
+        <p class="text-gray-500 text-sm px-2"><%= exercise.emphasis %></p>
       </div>
+    </div>
+    <div>
+      <%= yield %>
 
     </div>
-    <p class="text-gray-500 text-sm px-2"><%= exercise.emphasis %></p>
+    <% if editing %>
+      <div>
+        <button type="button" class="btn btn-primary btn-sm">Manage sets</button>
+                <%= link_to "delete",
+                routine_remove_exercise_path(params[:id] || params[:routine_id], exercise_id: exercise.id || params[:exercise_id]),
+                data: {
+                  turbo_method: :patch,
+                },
+                class: "material-symbols-outlined btn btn-xs btn-ghost btn-circle hover:text-error" %>
+      </div>
+    <% end %>
+
   </div>
 <% end %>

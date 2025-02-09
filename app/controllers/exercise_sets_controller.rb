@@ -45,8 +45,5 @@ class ExerciseSetsController < ApplicationController
     params.require(:exercise_set).permit(:intensity, :weight, :reps)
   end
 
-  def test
-    puts "yo"
-  end 
   
 end

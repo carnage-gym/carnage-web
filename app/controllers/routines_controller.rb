@@ -49,14 +49,14 @@ class RoutinesController < ApplicationController
 
   def add_exercise
     exercise = Exercise.find(params[:exercise_id])
-    exercise.exercise_sets.new(intensity: 1, routine_id: @routine.id, weight: 0, reps: 0)
     @routine.exercises << exercise
+    @routine.exercises.find(params[:exercise_id]).exercise_sets.new(intensity: 1, weight: 0, reps: 0)
 
     if @routine.save
       respond_to do |format|
         format.html { redirect_to edit_routine_path(@routine), status: :success }
         format.turbo_stream { render turbo_stream: turbo_stream.append(:exercises,
-                                                                       partial: 'exercises/exercise', locals: { exercise: })}
+                                                                       partial: 'exercises/exercise', locals: { exercise:, editing: true })}
       end
     else
       redirect_to edit_routine_path(@routine, notice: "no.")
