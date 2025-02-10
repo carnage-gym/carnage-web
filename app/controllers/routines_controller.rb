@@ -52,15 +52,12 @@ class RoutinesController < ApplicationController
     @routine.exercises << exercise
     @routine.exercises.find(params[:exercise_id]).exercise_sets.new(intensity: 1, weight: 0, reps: 0)
 
-    if @routine.save
       respond_to do |format|
         format.html { redirect_to edit_routine_path(@routine), status: :success }
         format.turbo_stream { render turbo_stream: turbo_stream.append(:exercises,
                                                                        partial: 'exercises/exercise', locals: { exercise:, editing: true })}
       end
-    else
-      redirect_to edit_routine_path(@routine, notice: "no.")
-    end
+
   end
 
   def remove_exercise

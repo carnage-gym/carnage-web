@@ -38,13 +38,15 @@
         <p class="font-bold text-primary text-xl">Add Exercises</p>
         <div class="overflow-auto max-h-[30rem]">
           <% for ex in Exercise.all %>
-            <%= render ex, editing: false do %>
-              <%= link_to "+",
-                  routine_add_exercise_path(params[:id], exercise_id: ex.id),
-                  data: {
-                    turbo_method: :patch,
-                  },
-                  class: "btn btn-xs btn-circle btn-primary" %>
+            <% if is_not_present(routine, ex.id) %>
+              <%= render ex, editing: false do %>
+                <%= link_to "+",
+                    routine_add_exercise_path(params[:id], exercise_id: ex.id),
+                    data: {
+                      turbo_method: :patch,
+                    },
+                    class: "btn btn-xs btn-circle btn-primary" %>
+              <% end %>
             <% end %>
           <% end %>
         </div>
