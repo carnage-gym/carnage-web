@@ -1,8 +1,4 @@
 class ApplicationController < ActionController::Base
-  #  rescue_from ActiveRecord::RecordNotFound, with: :not_found
-
-  def not_found
-    render 'application/404', formats: [:html], status: 404
-  end
+  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
+  allow_browser versions: :modern
 end
-    

@@ -1,14 +1,24 @@
-![](/app/assets/images/logo-name.png)
+# README
 
-# Carnage - the workout tracker
-> ⚠️ The project is **not usable** yet
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-Carnage is a simple yet **reliable** workout tracker written by someone who's obsessed with lifting and maximizing hypertrophy!
+Things you may want to cover:
 
-It has all the features most workout trackers do, except none of them are or will be blocked behind a paywall!
+* Ruby version
 
-# When will the project be complete?
-I don't know. I started this way back when my experience with Rails was nearly 0 (and it hasn't increased much since), so not only will I have to finish the project, but I will also need to rewrite a bunch of old code.
+* System dependencies
 
-# Isn't tracking workouts on a computer kind of counter-intuitive?
-This question is one that I had throughout the first few months of development and the answer is yes. In order to solve this I had the idea of first developing a web app that can provide basic functionality, such as routine creation and develop native mobile apps later to provide the latter and the remaining features, such as editing workouts, etc.
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
