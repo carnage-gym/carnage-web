@@ -8,5 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+User.destroy_all
+
 puts "Seeding users..."
 User.create(email_address: "user@example.com", password: "123456")
