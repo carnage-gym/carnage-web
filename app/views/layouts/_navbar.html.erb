@@ -6,5 +6,6 @@
     <%= button_to "Sign Out", session_path, method: :delete, class: "text-red-400 hover:text-red-400/75" %>
   <% else %>
     <%= link_to "Sign in", new_session_path, class: "text-green-400 hover:text-green-400/75" %>
+    <%= link_to "Sign up", new_session_path, class: "text-green-400 hover:text-green-400/75" %>
   <% end %>
 </div>

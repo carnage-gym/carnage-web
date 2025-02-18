@@ -7,9 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     # workaround.
-    u = User.find_by(username: params[:username])
-
-    if u.present? && user = User.authenticate_by(params.merge(email_address: u.email_address).permit(:email_address, :password))
+    if user = User.authenticate_by(params.permit(:username, :password))
       start_new_session_for user
       redirect_to after_authentication_url
     else
