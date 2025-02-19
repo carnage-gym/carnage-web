@@ -1,9 +1,14 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
-<%= form_with url: session_path do |form| %>
-  <%= form.text_field :username, required: true, autofocus: true, autocomplete: "username", placeholder: "Username", value: params[:username] %><br>
-  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
-  <%= form.submit "Sign in" %>
-<% end %>
-<br>
-<%= link_to "Forgot password?", new_password_path %>
+<div class="max-w-[40rem] mx-auto">
+  <% if flash[:alert] %> <!-- TODO: turn this into a component/partial -->
+    <p class="bg-red-400/80 p-4 text-white font-semibold rounded-xl flex grow"><%= flash[:alert] %></p>
+  <% end %>
+  <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+  <p class="text-8xl text-center font-extrabold my-4">Sign in.</p>
+  <%= form_with url: session_path, class: "flex flex-col" do |form| %>
+    <%= form.text_field :username, required: true, autofocus: true, autocomplete: "username", placeholder: "Username", value: params[:username] %><br>
+    <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
+    <%= form.submit "Sign in", class: "px-4 py-1 bg-black text-white font-semibold rounded-full transition ease-in-out hover:bg-black/75" %>
+  <% end %>
+  <br>
+  <%= link_to "Forgot password?", new_password_path %>
+</div>
