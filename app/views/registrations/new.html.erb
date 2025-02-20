@@ -1,6 +1,12 @@
 <div class="max-w-[40rem] mx-auto">
-  <% if flash[:alert] %> <!-- TODO: turn this into a component/partial -->
-    <p class="bg-red-400/80 p-4 text-white font-semibold rounded-xl flex grow"><%= flash[:alert] %></p>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <ul class="bg-red-400/80 p-4 text-white font-semibold rounded-xl flex grow">
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
   <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
   <p class="text-8xl text-center font-extrabold my-4">Sign up.</p>
