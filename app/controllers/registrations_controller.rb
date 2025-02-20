@@ -11,7 +11,7 @@ class RegistrationsController < ApplicationController
       start_new_session_for @user
       redirect_to root_path
     else
-      redirect_to new_registration_path, errors: @user.errors
+      render :new
     end
   end
 

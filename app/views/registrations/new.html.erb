@@ -1,16 +1,16 @@
 <div class="max-w-[40rem] mx-auto">
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <ul class="bg-red-400/80 p-4 text-white font-semibold rounded-xl flex grow">
+      <ul class="flex flex-col bg-red-400/80 p-4 text-white font-semibold rounded-xl flex grow">
         <% @user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li>• <%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
   <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
   <p class="text-8xl text-center font-extrabold my-4">Sign up.</p>
-  <%= form_with url: registrations_path, class: "flex flex-col" do |form| %>
+  <%= form_with url: registrations_path, data: {turbo: false}, class: "flex flex-col" do |form| %>
     <%= form.email_field :email_address, required: :true, autocomplete: "email", placeholder: "Email Address", value: params[:email_address] %><br>
     <%= form.text_field :username, required: true, autofocus: true, autocomplete: "username", placeholder: "Username", value: params[:username] %><br>
     <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Password", maxlength: 72 %><br>
