@@ -5,8 +5,8 @@
   <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
   <p class="text-8xl text-center font-extrabold my-4">Sign in.</p>
   <%= form_with url: session_path, class: "flex flex-col gap-2" do |form| %>
-    <%= form.text_field :username, required: true, autofocus: true, autocomplete: "username", placeholder: "Username", value: params[:username], class: "p-2 rounded-xl border-gray-200 border-1" %><br>
-    <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "p-2 rounded-xl border-gray-200 border-1" %><br>
+    <%= form.text_field :username, required: true, autofocus: true, autocomplete: "username", placeholder: "Username", value: params[:username], class: "p-2 rounded-xl outline outline-gray-200 focus:outline-black" %><br>
+    <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "p-2 rounded-xl outline outline-gray-200 focus:outline-black" %><br>
     <%= form.submit "Sign in", class: "px-4 py-1 bg-emerald-500 text-white font-semibold rounded-full transition ease-in-out hover:bg-emerald-500/75" %>
   <% end %>
   <br>
