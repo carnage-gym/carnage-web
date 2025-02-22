@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :exercises
   resource :session
   resources :passwords, param: :token
   resources :registrations, only: [ :new, :create ]
