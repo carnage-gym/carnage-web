@@ -7,9 +7,9 @@
   <% end %>
   <div class="flex w-full justify-end gap-4">
     <% if authenticated? %>
-      <%= button_to "Sign Out", session_path, method: :delete, class: "py-1 px-2 bg-red-500 text-white hover:bg-red-500/75 rounded-xl" %>
+      <%= button_to "Sign Out", session_path, method: :delete, class: "py-1 px-2 bg-red-500 text-white transition ease-in-out hover:bg-red-500/75 rounded-xl" %>
     <% else %>
-      <%= link_to "Sign in", new_session_path, class: "py-1 px-2 bg-emerald-500 text-white rounded-xl" %>
+      <%= link_to "Sign in", new_session_path, class: "py-1 px-2 bg-emerald-500 text-white transition ease-in-out hover:bg-emerald-500/75 rounded-xl" %>
     <% end %>
   </div>
 </div>

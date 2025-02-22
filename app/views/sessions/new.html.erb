@@ -1,6 +1,6 @@
 <div class="max-w-[40rem] min-h-[36rem] mx-auto p-20 border-gray-200 rounded-xl border-2">
   <% if flash[:alert] %> <!-- TODO: turn this into a component/partial -->
-    <p class="bg-red-400/80 p-4 text-white font-semibold rounded-xl flex grow"><%= flash[:alert] %></p>
+    <p class="bg-red-400/80 outline outline-2 outline-red-300 p-2 text-white font-semibold rounded-xl"><%= flash[:alert] %></p>
   <% end %>
   <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
   <p class="text-8xl text-center font-extrabold my-4">Sign in.</p>

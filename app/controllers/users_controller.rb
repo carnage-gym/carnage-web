@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def show; end
 
+  def edit;  end
+
   def destroy
     terminate_session
     return unless @user.destroy

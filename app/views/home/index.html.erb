@@ -1,5 +1,8 @@
 <div class="md:container mx-auto">
-  <div class="container min-h-screen text-center p-4 m-4">
+  <div class="min-h-screen text-center p-4 m-4">
+    <% if flash[:notice] %>
+      <p class="max-w-[20rem] bg-emerald-400/80 outline outline-2 outline-emerald-300 p-2 text-white font-semibold rounded-xl"><%= flash[:notice] %></p>
+    <% end %>
     <p class="text-8xl uppercase font-extrabold font-montserrat">Carnage.</p>
     <p class="font-semibold">Train with intent.</p>
     <div class="flex gap-4 mt-2 justify-center w-full">

@@ -15,8 +15,8 @@
   <p class="text-5xl font-extrabold mt-10 mb-4">Danger zone.</p>
   <div class="flex flex-col gap-4">
     <div class="flex justify-between">
-      <p>Delete account</p>
-      <%= button_to "Delete", user_path(id: @user.id), method: :delete, class: "rounded-full px-4 py-1 bg-red-500 text-white" %>
+      <p class="font-semibold">Delete account</p>
+      <%= button_to "Delete", user_path(id: @user.id), method: :delete, class: "rounded-full px-4 py-1 transition ease-in-out hover:bg-red-500/75 bg-red-500 text-white" %>
     </div>
   </div>
 </div>
