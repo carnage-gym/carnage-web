@@ -1,4 +1,4 @@
-class ProfileController < ApplicationController
+class UsersController < ApplicationController
   before_action :set_user, except: [ :index ]
 
   def index
@@ -7,6 +7,13 @@ class ProfileController < ApplicationController
   end
 
   def show; end
+
+  def destroy
+    terminate_session
+    return unless @user.destroy
+    redirect_to root_path, notice: "Account has been successfully deleted."
+  end
+
 
   private
     def set_user

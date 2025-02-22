@@ -12,3 +12,4 @@ User.destroy_all
 
 puts "Seeding users..."
 User.create(email_address: "user@example.com", username: "xkyfal", password: "123456")
+User.create(email_address: "test@example.com", username: "coolname1", password: "123456")

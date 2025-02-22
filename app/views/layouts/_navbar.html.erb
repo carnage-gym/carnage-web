@@ -2,7 +2,7 @@
   <%= link_to "Home", root_path, class: "text-gray-800 hover:text-gray-800/75" %>
   <% if authenticated? %>
     <%= link_to "Routines", root_path, class: "text-gray-800 hover:text-gray-800/75" %>
-    <%= link_to "Profile", profile_path(current_user.id), class: "text-gray-800 hover:text-gray-800/75" %>
+    <%= link_to "Profile", users_path(id: current_user.id), class: "text-gray-800 hover:text-gray-800/75" %>
     <%= link_to "Feed", root_path, class: "text-gray-800 hover:text-gray-800/75" %>
   <% end %>
   <div class="flex w-full justify-end gap-4">
