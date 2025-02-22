@@ -14,7 +14,6 @@ module Authentication
   end
 
   private
-    # lame workaround but oh well.
     def current_user
       Current.session.user
     end

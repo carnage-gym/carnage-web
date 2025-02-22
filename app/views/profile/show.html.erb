@@ -1,0 +1,22 @@
+<div class="md:mx-container relative mx-auto max-w-[80rem] min-h-screen">
+  <div class="flex flex-col gap-4  mb-10">
+    <div class="flex justify-center gap-4 items-center">
+      <img class="max-w-[8rem] max-h-[8rem] rounded-full object-scale-down" src="https://i.pinimg.com/474x/b9/ff/56/b9ff56209b3d5156c0790e01ecde7abf.jpg" />
+      <div class="flex flex-col gap-2">
+        <p class="font-extrabold text-6xl"><%= @user.username %></p>
+        <%= link_to "Edit profile", edit_profile_path(@user), class: "rounded-full max-w-[7rem] px-4 py-1 text-center bg-black text-white" %>
+      </div>
+    </div>
+    <p class="text-lg text-gray-400 text-center text-justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, doloribus aliquid laborum expedita molestiae aliquam quibusdam voluptatem, fugiat perferendis ad sed optio voluptatum, quam incidunt possimus voluptate voluptatibus? Corporis, eveniet.</p>
+  </div>
+  <p class="text-5xl font-extrabold mb-10">Your stats.</p>
+  <p class="text-5xl font-extrabold">Your routines.</p>
+  <hr class="border border-4 border-dashed border-black mt-10">
+  <p class="text-5xl font-extrabold mt-10 mb-4">Danger zone.</p>
+  <div class="flex flex-col gap-4">
+    <div class="flex justify-between">
+      <p>Delete account</p>
+      <%= link_to "Delete", edit_profile_path(@user), class: "rounded-full px-4 py-1 bg-red-500 text-white" %>
+    </div>
+  </div>
+</div>

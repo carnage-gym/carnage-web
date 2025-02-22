@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   validates_presence_of :username
   validates_uniqueness_of :username
+  validates :biography, length: { maximum: 60 }, allow_blank: true
 
   validates :password, confirmation: { case_sensitive: true }
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_21_141242) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_22_143059) do
   create_table "exercises", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -33,6 +33,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_21_141242) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.string "biography"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
