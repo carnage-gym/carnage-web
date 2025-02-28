@@ -49,13 +49,14 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+  gem "standard", "~> 1.36"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem "rubocop", "~> 1.72"
   gem "ruby-lsp", "~> 0.23.11"
+  gem "erb_lint", require: false
 end
 
 group :test do
@@ -71,3 +72,10 @@ gem "tailwindcss-rails", "~> 4.0"
 gem "htmlbeautifier", "~> 1.4"
 
 gem "pundit", "~> 2.4"
+
+
+gem "jsbundling-rails", "~> 1.3"
+
+gem "esbuild-rails", "~> 0.1.4"
+
+gem "rspec", "~> 3.13"

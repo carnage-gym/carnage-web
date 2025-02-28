@@ -1,5 +1,5 @@
 class RoutinesController < ApplicationController
-  before_action :set_routine, only: %i[ show edit update destroy ]
+  before_action :set_routine, only: %i[show edit update destroy]
 
   # GET /routines or /routines.json
   def index
@@ -58,13 +58,14 @@ class RoutinesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_routine
-      @routine = Routine.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def routine_params
-      params.expect(routine: [ :name ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_routine
+    @routine = Routine.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def routine_params
+    params.expect(routine: [:name])
+  end
 end

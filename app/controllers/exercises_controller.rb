@@ -1,5 +1,5 @@
 class ExercisesController < ApplicationController
-  before_action :set_exercise, only: %i[ show edit update destroy ]
+  before_action :set_exercise, only: %i[show edit update destroy]
 
   # GET /exercises or /exercises.json
   def index
@@ -60,13 +60,14 @@ class ExercisesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_exercise
-      @exercise = Exercise.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def exercise_params
-      params.expect(exercise: [ :name, :description ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_exercise
+    @exercise = Exercise.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def exercise_params
+    params.expect(exercise: [:name, :description])
+  end
 end
