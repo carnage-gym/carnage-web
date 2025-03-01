@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_28_181705) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_01_105647) do
+  create_table "exercise_sets", force: :cascade do |t|
+    t.integer "weight"
+    t.integer "reps"
+    t.decimal "rir"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "exercises", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -25,6 +33,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_181705) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.integer "exercises_id", null: false
+    t.integer "exercise_sets_id", null: false
+    t.index ["exercise_sets_id"], name: "index_routines_on_exercise_sets_id"
+    t.index ["exercises_id"], name: "index_routines_on_exercises_id"
     t.index ["user_id"], name: "index_routines_on_user_id"
   end
 
@@ -48,6 +60,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_181705) do
   end
 
   add_foreign_key "exercises", "users"
+  add_foreign_key "routines", "exercise_sets", column: "exercise_sets_id"
+  add_foreign_key "routines", "exercises", column: "exercises_id"
   add_foreign_key "routines", "users"
   add_foreign_key "sessions", "users"
 end

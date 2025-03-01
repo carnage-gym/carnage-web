@@ -21,7 +21,7 @@ class RoutinesController < ApplicationController
 
   # POST /routines or /routines.json
   def create
-    @routine = Routine.new(routine_params)
+    @routine = current_user.routines.new(routine_params)
 
     respond_to do |format|
       if @routine.save

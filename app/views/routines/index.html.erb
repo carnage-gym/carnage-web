@@ -7,10 +7,14 @@
 
   <div class="text-center">
     <p class="font-extrabold text-8xl font-montserrat">Routines.</p>
-    <%= link_to "New routine", new_routine_path, class: "px-4 py-1 bg-black text-white font-semibold rounded-full" %>
+    <div class="flex mt-4 justify-center gap-4">
+      <%= link_to "New routine", new_routine_path, class: "px-4 py-1 bg-black text-white font-semibold rounded-full" %>
+      <%= link_to "Official Routines", new_routine_path, class: "px-4 py-1 bg-black text-white font-semibold rounded-full" %>
+    </div>
   </div>
 
-  <div id="routines" class="min-w-full mt-20">
+  <div id="routines" class="min-w-full mt-10">
+    <p class="text-5xl font-extrabold mb-10">Your routines.</p>
     <% if @routines.any? %>
       <% @routines.each do |routine| %>
         <%= render routine %>
@@ -19,22 +23,13 @@
         </p>
       <% end %>
     <% else %>
-    <div class="grid h-screen place-content-center bg-white px-4">
-  <div class="text-center text-red-50">
-    <h1 class="text-9xl font-black text-gray-200">0</h1>
-
-    <p class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">routines found!</p>
-
-    <p class="mt-4 text-gray-500">create a new one.</p>
-
-    <a
-      href="#"
-      class="mt-6 inline-block rounded-sm bg-indigo-600 px-5 py-3 text-sm font-medium text-white hover:bg-indigo-700 focus:ring-3 focus:outline-hidden">
-      Go Back Home
-    </a>
-  </div>
-</div>
-
+      <div class="grid place-content-center bg-white px-4">
+        <div class="text-center text-red-50">
+          <h1 class="text-9xl font-black text-gray-200">0</h1>
+          <p class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">routines found!</p>
+          <p class="mt-4 text-gray-500">create a new one.</p>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
