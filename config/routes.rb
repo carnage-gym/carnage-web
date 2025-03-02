@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :exercise_sets, only: [:create, :update, :destroy]
-  resources :routines
+  resources :routines, except: [:create]
   resources :exercises
   resource :session
   resources :passwords, param: :token

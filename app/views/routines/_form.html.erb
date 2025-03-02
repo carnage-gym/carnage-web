@@ -11,12 +11,15 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": routine.errors[:name].none?, "border-red-400 focus:outline-red-600": routine.errors[:name].any?}] %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  <div class="flex flex-col">
+    <div class="flex gap-2">
+      <%= form.text_field :name, placeholder: @routine.name, class: "p-2 rounded-xl outline outline-gray-200 focus:outline-black w-full" %>
+      <%= form.submit class: "px-4 py-1 bg-black text-white text-sm font-semibold rounded-full transition ease-in-out hover:bg-emerald-400/75" %>
+    </div>
+    <hr class="border-4 border-dashed border-black my-10">
+    <div class="flex justify-between items-center">
+      <p class="font-extrabold text-5xl">Exercises.</p>
+      <button type="button" class="px-2 fa fa-plus py-2 text-black bg-white font-semibold transition ease-in-out hover:bg-black hover:text-white rounded-full"></button>
+    </div>
   </div>
 <% end %>

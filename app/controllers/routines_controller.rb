@@ -12,26 +12,14 @@ class RoutinesController < ApplicationController
 
   # GET /routines/new
   def new
-    @routine = Routine.new
+    @routine = current_user.routines.new(name: "New Routine")
+    @routine.save
+
+    render :edit
   end
 
   # GET /routines/1/edit
   def edit
-  end
-
-  # POST /routines or /routines.json
-  def create
-    @routine = current_user.routines.new(routine_params)
-
-    respond_to do |format|
-      if @routine.save
-        format.html { redirect_to @routine, notice: "Routine was successfully created." }
-        format.json { render :show, status: :created, location: @routine }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @routine.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /routines/1 or /routines/1.json

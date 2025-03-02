@@ -1,10 +1,7 @@
 <% content_for :title, "Editing routine" %>
+<%= link_to "", routines_path, class: "ml-4 fa fa-arrow-left px-2 py-2 text-black font-semibold rounded-full transition ease-in-out hover:text-white hover:bg-black" %>
 
-<div class="md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing routine</h1>
+<div class="md:container mx-auto">
 
   <%= render "form", routine: @routine %>
-
-  <%= link_to "Show this routine", @routine, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to routines", routines_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
 </div>
