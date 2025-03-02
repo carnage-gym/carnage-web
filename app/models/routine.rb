@@ -3,5 +3,5 @@ class Routine < ApplicationRecord
   has_many :exercises
   has_many :exercise_sets, through: :exercises
 
-  validates_presence_of :name
+  validates :name, presence: true, uniqueness: true, length: {maximum: 16, too_long: "Name must not exceed ‰{count} characters."}
 end
