@@ -1,5 +1,0 @@
-class AddExercisesToRoutine < ActiveRecord::Migration[8.0]
-  def change
-    add_reference :routines, :exercises, null: false, foreign_key: true
-  end
-end
