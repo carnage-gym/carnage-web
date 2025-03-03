@@ -10,6 +10,7 @@
 
 User.destroy_all
 Exercise.destroy_all
+MuscleGroup.destroy_all
 
 puts "Seeding users..."
 u = User.create(email_address: "user@example.com", username: "xkyfal", password: "123456")

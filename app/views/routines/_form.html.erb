@@ -1,4 +1,4 @@
-<%= form_with(model: routine, class: "contents") do |form| %>
+<%= form_with(model: routine, class: "contents relative") do |form| %>
   <% if routine.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
       <h2><%= pluralize(routine.errors.count, "error") %> prohibited this routine from being saved:</h2>
@@ -17,9 +17,13 @@
       <%= form.submit class: "px-4 py-1 bg-black text-white text-sm font-semibold rounded-full transition ease-in-out hover:bg-emerald-400/75" %>
     </div>
     <hr class="border-4 border-dashed border-black my-10">
-    <div class="flex justify-between items-center">
+    <div data-controller="dialog" class="flex justify-between items-center">
       <p class="font-extrabold text-5xl">Exercises.</p>
-      <button type="button" class="px-2 fa fa-plus py-2 text-black bg-white font-semibold transition ease-in-out hover:bg-black hover:text-white rounded-full"></button>
+      <button type="button" data-action="dialog#showDialog" class="px-2 fa fa-plus py-2 text-black bg-white font-semibold transition ease-in-out hover:bg-black hover:text-white rounded-full"></button>
+
+      <dialog data-dialog-target="dialog" class="absolute dialog p-4 backdrop-blur-lg bg-black">
+        <p class="font-extrabold text-6xl font-montserrat">Add Exercise</p>
+      </dialog>
     </div>
   </div>
 <% end %>

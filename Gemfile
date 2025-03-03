@@ -79,3 +79,5 @@ gem "jsbundling-rails", "~> 1.3"
 gem "esbuild-rails", "~> 0.1.4"
 
 gem "rspec", "~> 3.13"
+
+gem "nice_partials", "~> 0.10.1"

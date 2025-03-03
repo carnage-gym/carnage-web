@@ -25,8 +25,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_03_143124) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
-    t.integer "routine_id"
-    t.index ["routine_id"], name: "index_exercises_on_routine_id"
     t.index ["user_id"], name: "index_exercises_on_user_id"
   end
 
@@ -43,10 +41,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_03_143124) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
-    t.integer "exercises_id"
-    t.integer "exercise_sets_id"
-    t.index ["exercise_sets_id"], name: "index_routines_on_exercise_sets_id"
-    t.index ["exercises_id"], name: "index_routines_on_exercises_id"
     t.index ["user_id"], name: "index_routines_on_user_id"
   end
 
@@ -69,10 +63,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_03_143124) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
-  add_foreign_key "exercises", "routines"
   add_foreign_key "exercises", "users"
   add_foreign_key "muscle_groups", "exercises"
-  add_foreign_key "routines", "exercise_sets", column: "exercise_sets_id"
   add_foreign_key "routines", "users"
   add_foreign_key "sessions", "users"
 end
