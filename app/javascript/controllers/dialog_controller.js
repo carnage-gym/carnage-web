@@ -6,6 +6,11 @@ export default class extends Controller {
   
   showDialog() {
     const dialog = this.dialogTarget
-    dialog.show()
+    dialog.showModal()
+  }
+
+  closeDialog() {
+    const dialog = this.dialogTarget
+    dialog.close()
   }
 }

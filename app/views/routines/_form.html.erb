@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
+  <%= render "components/dialog", title: "Add Exercise." do |d| %>
+    <p>test</p>
+  <% end %>
+
   <div class="flex flex-col">
     <div class="flex gap-2">
       <%= form.text_field :name, placeholder: @routine.name, class: "p-2 rounded-xl outline outline-gray-200 focus:outline-black w-full" %>
       <%= form.submit class: "px-4 py-1 bg-black text-white text-sm font-semibold rounded-full transition ease-in-out hover:bg-emerald-400/75" %>
     </div>
     <hr class="border-4 border-dashed border-black my-10">
-    <div data-controller="dialog" class="flex justify-between items-center">
+    <div class="flex justify-between items-center">
       <p class="font-extrabold text-5xl">Exercises.</p>
       <button type="button" data-action="dialog#showDialog" class="px-2 fa fa-plus py-2 text-black bg-white font-semibold transition ease-in-out hover:bg-black hover:text-white rounded-full"></button>
-
-      <dialog data-dialog-target="dialog" class="absolute dialog p-4 backdrop-blur-lg bg-black">
-        <p class="font-extrabold text-6xl font-montserrat">Add Exercise</p>
-      </dialog>
     </div>
   </div>
 <% end %>

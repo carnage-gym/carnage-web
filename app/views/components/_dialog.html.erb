@@ -1,0 +1,10 @@
+<dialog data-dialog-target="dialog" class="absolute top-1/2 -translate-y-1/2 backdrop:backdrop-blur-sm min-w-[45rem] min-h-[30rem] mx-auto py-4 px-4 border-gray-200 rounded-xl border-2">
+  <div class="flex justify-between mb-4 align-middle">
+    <p class="font-extrabold text-4xl font-montserrat"><%= partial.title %></p>
+    <button type="button" data-action="click->dialog#closeDialog" class="text-lg fa font-awesome fa-close transition ease-in-out hover:text-red-500"></button>
+  </div>
+
+  <% if partial.body.present? %>
+    <%= partial.body%>
+  <% end %>
+</dialog>

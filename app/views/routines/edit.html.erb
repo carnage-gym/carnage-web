@@ -1,7 +1,6 @@
 <% content_for :title, "Editing routine" %>
 <%= link_to "", routines_path, class: "ml-4 fa fa-arrow-left px-2 py-2 text-black font-semibold rounded-full transition ease-in-out hover:text-white hover:bg-black" %>
 
-<div class="md:container mx-auto">
-
+<div class="md:container mx-auto" data-controller="dialog">
   <%= render "form", routine: @routine %>
 </div>
