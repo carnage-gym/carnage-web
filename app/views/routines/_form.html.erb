@@ -11,8 +11,16 @@
     </div>
   <% end %>
 
-  <%= render "components/dialog", title: "Add Exercise." do |d| %>
-    <p>test</p>
+  <%= render "components/dialog", title: "Add Exercise." do |partial| %>
+    <% partial.body do %>
+      <% Exercise.all.each do |e| %>
+        <%= render e do |p| %>
+          <%= p.body do %>
+            <%= button_to "", routine_addExercise_path(routine_id: routine.id, exercise_id: e.id), method: :patch, class: "px-2 fa fa-plus py-2 font-semibold transition ease-in-out hover:bg-black hover:text-white rounded-full" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
   <% end %>
 
   <div class="flex flex-col">
@@ -23,7 +31,11 @@
     <hr class="border-4 border-dashed border-black my-10">
     <div class="flex justify-between items-center">
       <p class="font-extrabold text-5xl">Exercises.</p>
-      <button type="button" data-action="dialog#showDialog" class="px-2 fa fa-plus py-2 text-black bg-white font-semibold transition ease-in-out hover:bg-black hover:text-white rounded-full"></button>
+      <button type="button" data-action="dialog#showDialog" class="px-2 fa fa-plus py-2 font-semibold transition ease-in-out hover:bg-black hover:text-white rounded-full"></button>
     </div>
+
+    <% @routine.exercises.each do |f| %>
+      <%= render f %>
+    <% end %>
   </div>
 <% end %>

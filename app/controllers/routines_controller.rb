@@ -45,6 +45,17 @@ class RoutinesController < ApplicationController
     end
   end
 
+  # PATCH /routines/1/addExercise/1
+  def addExercise
+    @routine = Routine.find(params[:routine_id])
+    exercise = Exercise.find(params[:exercise_id])
+
+    @routine.exercises.push(exercise)
+    @routine.save!
+
+    redirect_to edit_routine_path(@routine)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

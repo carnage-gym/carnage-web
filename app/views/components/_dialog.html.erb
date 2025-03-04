@@ -4,7 +4,7 @@
     <button type="button" data-action="click->dialog#closeDialog" class="text-lg fa font-awesome fa-close transition ease-in-out hover:text-red-500"></button>
   </div>
 
-  <% if partial.body.present? %>
-    <%= partial.body%>
+  <% if partial.body? %>
+    <%= partial.body %>
   <% end %>
 </dialog>
