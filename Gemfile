@@ -71,7 +71,7 @@ gem "tailwindcss-rails", "~> 4.0"
 
 gem "htmlbeautifier", "~> 1.4"
 
-gem "pundit", "~> 2.4"
+gem "pundit", "~> 2.5"
 
 
 gem "jsbundling-rails", "~> 1.3"
