@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :exercise_sets, only: [:create, :update, :destroy]
   resources :routines, except: [:create] do
-    patch "addExercise", to: "routines#addExercise"
+    post "addExercise", to: "routines#addExercise"
   end
   resources :exercises
   resource :session

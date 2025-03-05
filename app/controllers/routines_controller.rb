@@ -65,6 +65,6 @@ class RoutinesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def routine_params
-    params.expect(routine: [:name])
+    params.expect(routine: [:name, exercise_ids: []])
   end
 end

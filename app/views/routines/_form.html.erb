@@ -16,7 +16,7 @@
       <% Exercise.all.each do |e| %>
         <%= render e do |p| %>
           <%= p.body do %>
-            <%= button_to "", routine_addExercise_path(routine_id: routine.id, exercise_id: e.id), method: :patch, class: "px-2 fa fa-plus py-2 font-semibold transition ease-in-out hover:bg-black hover:text-white rounded-full" %>
+            <%= link_to "", routine_addExercise_path(routine_id: routine.id, exercise_id: e.id), data: { turbo_method: :post }, class: "px-2 fa fa-plus py-2 font-semibold transition ease-in-out hover:bg-black hover:text-white rounded-full" %>
           <% end %>
         <% end %>
       <% end %>
