@@ -14,7 +14,7 @@
   <%= render "components/dialog", title: "Add Exercise." do |partial| %>
     <% partial.body do %>
       <%= turbo_frame_tag :exercises_dialog do %>
-        <% Exercise.all.select { |ex| !ex.in? @routine.exercises }.each do |e| %>
+        <% @addable_exercises.each do |e| %>
           <%= turbo_frame_tag dom_id(e, :view) do %>
             <%= render e do |p| %>
               <%= p.body do %>
@@ -39,7 +39,7 @@
     </div>
 
     <%= turbo_frame_tag "exercises" do %>
-      <% @exercises.each do |e| %>
+      <% @routine.exercises.each do |e| %>
         <%= turbo_frame_tag dom_id(e, :edit) do %>
           <%= render e do |p| %>
             <% p.body do %>

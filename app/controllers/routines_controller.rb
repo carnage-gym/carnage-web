@@ -20,7 +20,8 @@ class RoutinesController < ApplicationController
 
   # GET /routines/1/edit
   def edit
-    @exercises = Exercise.all.select { |ex| ex.in? @routine.exercises }
+    # the exercises that can be added to a routine. prevents duplicates.
+    @addable_exercises = Exercise.all.select { |ex| !ex.in? @routine.exercises }
   end
 
   # PATCH/PUT /routines/1 or /routines/1.json
