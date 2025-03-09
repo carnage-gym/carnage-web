@@ -36,9 +36,11 @@
 
     <%= turbo_frame_tag "exercises" do %>
       <% @routine.exercises.each do |e| %>
-        <%= render e do |p| %>
-          <% p.body do %>
-            <%= link_to "x", routine_remove_exercise_path(routine_id: routine.id, exercise_id: e.id), data: { turbo_method: :post }, class: "font-semibold " %>
+        <%= turbo_frame_tag dom_id(e, :edit) do %>
+          <%= render e do |p| %>
+            <% p.body do %>
+              <%= link_to "x", routine_remove_exercise_path(routine_id: @routine.id, exercise_id: e.id), data: { turbo_method: :post }, class: "font-semibold" %>
+            <% end%>
           <% end %>
         <% end %>
       <% end %>

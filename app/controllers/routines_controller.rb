@@ -67,7 +67,7 @@ class RoutinesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to edit_routine_path(@routine) }
       format.turbo_stream {
-        render turbo_stream: turbo_stream.remove("exercise_#{exercise.id}") # temporary.
+        render turbo_stream: turbo_stream.remove("edit_exercise_#{exercise.id}") # temporary.
       }
     end
   end

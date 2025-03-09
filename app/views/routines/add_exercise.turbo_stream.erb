@@ -1,4 +1,9 @@
-<%= turbo_frame_tag dom_id(@exercise, :edit) do %>
-  <%= turbo_stream.append(:exercises, partial: "exercises/exercise",
-locals: {exercise: @exercise, routine_id: @routine.id}) %>
+<%= turbo_stream.append :exercises do %>
+  <%= turbo_frame_tag dom_id(@exercise, :edit) do %>
+    <%= render @exercise, routine_id: @routine.id  do |p| %>
+      <% p.body do %>
+        <%= link_to "x", routine_remove_exercise_path(routine_id: @routine.id, exercise_id: @exercise.id), data: { turbo_method: :post }, class: "font-semibold" %>
+      <% end %>
+    <% end %>
+  <% end %>
 <% end %>
