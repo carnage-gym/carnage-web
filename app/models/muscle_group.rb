@@ -1,3 +1,3 @@
 class MuscleGroup < ApplicationRecord
-  belongs_to :exercise, optional: true
+  has_and_belongs_to_many :exercises
 end

@@ -46,14 +46,30 @@ class RoutinesController < ApplicationController
   end
 
   # PATCH /routines/1/addExercise/1
-  def addExercise
+  def add_exercise
+    @routine = Routine.find(params[:routine_id])
+    @exercise = Exercise.find(params[:exercise_id])
+
+    @routine.exercises.push(@exercise)
+
+    respond_to do |format|
+      format.html { redirect_to edit_routine_path(@routine) }
+      format.turbo_stream
+    end
+  end
+
+  def remove_exercise
     @routine = Routine.find(params[:routine_id])
     exercise = Exercise.find(params[:exercise_id])
 
-    @routine.exercises.push(exercise)
-    @routine.save!
+    @routine.exercises.delete(exercise)
 
-    redirect_to edit_routine_path(@routine)
+    respond_to do |format|
+      format.html { redirect_to edit_routine_path(@routine) }
+      format.turbo_stream {
+        render turbo_stream: turbo_stream.remove("exercise_#{exercise.id}") # temporary.
+      }
+    end
   end
 
   private

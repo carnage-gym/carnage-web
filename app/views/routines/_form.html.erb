@@ -16,7 +16,7 @@
       <% Exercise.all.each do |e| %>
         <%= render e do |p| %>
           <%= p.body do %>
-            <%= link_to "", routine_addExercise_path(routine_id: routine.id, exercise_id: e.id), data: { turbo_method: :post }, class: "px-2 fa fa-plus py-2 font-semibold transition ease-in-out hover:bg-black hover:text-white rounded-full" %>
+            <%= link_to "", routine_add_exercise_path(routine_id: routine.id, exercise_id: e.id), data: { turbo_method: :post }, class: "px-2 fa fa-plus py-2 font-semibold transition ease-in-out hover:bg-black hover:text-white rounded-full" %>
           <% end %>
         <% end %>
       <% end %>
@@ -34,8 +34,14 @@
       <button type="button" data-action="dialog#showDialog" class="px-2 fa fa-plus py-2 font-semibold transition ease-in-out hover:bg-black hover:text-white rounded-full"></button>
     </div>
 
-    <% @routine.exercises.each do |f| %>
-      <%= render f %>
+    <%= turbo_frame_tag "exercises" do %>
+      <% @routine.exercises.each do |e| %>
+        <%= render e do |p| %>
+          <% p.body do %>
+            <%= link_to "x", routine_remove_exercise_path(routine_id: routine.id, exercise_id: e.id), data: { turbo_method: :post }, class: "font-semibold " %>
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 <% end %>

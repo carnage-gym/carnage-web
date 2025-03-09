@@ -1,0 +1,4 @@
+<%= turbo_frame_tag dom_id(@exercise, :edit) do %>
+  <%= turbo_stream.append(:exercises, partial: "exercises/exercise",
+locals: {exercise: @exercise, routine_id: @routine.id}) %>
+<% end %>

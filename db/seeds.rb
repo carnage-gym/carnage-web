@@ -19,7 +19,10 @@ User.create(email_address: "test@example.com", username: "coolname1", password: 
 puts "\nSeeding muscle groups..."
 traps = MuscleGroup.find_or_create_by(name: "Traps")
 chest = MuscleGroup.find_or_create_by(name: "Chest")
+lats = MuscleGroup.find_or_create_by(name: "Lats")
 
 puts "\nSeeding exercises..."
-Exercise.create(name: "Wide Grip T-Bar Row", description: "", user_id: u.id, muscle_group_ids: [traps.id])
-Exercise.create(name: "Machine Bench Press", description: "", user_id: u.id, muscle_group_ids: [chest.id])
+Exercise.create(name: "Wide Grip T-Bar Row", description: "", user_id: u.id, muscle_groups: [traps])
+Exercise.create(name: "Machine Bench Press", description: "", user_id: u.id, muscle_groups: [chest])
+Exercise.create(name: "Wide Grip Pulldown", description: "", user_id: u.id, muscle_groups: [lats])
+Exercise.create(name: "Incline Smith Bench Press", description: "", user_id: u.id, muscle_groups: [chest])
