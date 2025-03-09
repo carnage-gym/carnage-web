@@ -20,6 +20,7 @@ class RoutinesController < ApplicationController
 
   # GET /routines/1/edit
   def edit
+    @exercises = Exercise.all.select { |ex| ex.in? @routine.exercises }
   end
 
   # PATCH/PUT /routines/1 or /routines/1.json
@@ -60,15 +61,13 @@ class RoutinesController < ApplicationController
 
   def remove_exercise
     @routine = Routine.find(params[:routine_id])
-    exercise = Exercise.find(params[:exercise_id])
+    @exercise = Exercise.find(params[:exercise_id])
 
-    @routine.exercises.delete(exercise)
+    @routine.exercises.delete(@exercise)
 
     respond_to do |format|
       format.html { redirect_to edit_routine_path(@routine) }
-      format.turbo_stream {
-        render turbo_stream: turbo_stream.remove("edit_exercise_#{exercise.id}") # temporary.
-      }
+      format.turbo_stream
     end
   end
 

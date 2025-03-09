@@ -1,7 +1,7 @@
-<%= turbo_frame_tag dom_id(exercise), class:"p-2 border-x-0 border-t-0 border-b-gray-200 border-2" do %>
+<%= turbo_frame_tag dom_id(exercise), class: "p-2 border-x-0 border-t-0 border-b-gray-200 border-2" do %>
   <div class="flex items-center justify-between">
     <div class="flex align-middle gap-2">
-      <img src="https://t4.ftcdn.net/jpg/04/21/43/95/360_F_421439576_zzg0kGw1QZ6S6WDAS4qgglRPP4wxddjS.jpg" class="w-[3rem] h-[3rem] rounded-full" />
+      <img src="https://t4.ftcdn.net/jpg/04/21/43/95/360_F_421439576_zzg0kGw1QZ6S6WDAS4qgglRPP4wxddjS.jpg" class="w-[3rem] h-[3rem] rounded-full">
       <div>
         <p><%= exercise.name %></p>
         <p class="text-gray-500 text-sm"><%= join_muscle_groups(exercise) %></p>

@@ -1,0 +1,11 @@
+<%= turbo_stream.remove "edit_exercise_#{@exercise.id}" %>
+
+<%= turbo_stream.append :exercises_dialog do %>
+  <%= turbo_frame_tag dom_id(@exercise, :view) do %>
+    <%= render @exercise do |p| %>
+      <%= p.body do %>
+        <%= link_to "", routine_add_exercise_path(routine_id: @routine.id, exercise_id: @exercise.id), data: { turbo_method: :post }, class: "px-2 fa fa-plus py-2 font-semibold transition ease-in-out hover:bg-black hover:text-white rounded-full" %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
