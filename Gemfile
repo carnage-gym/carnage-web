@@ -50,6 +50,7 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
   gem "standard", "~> 1.36"
+  gem "rspec-rails", "~> 7.1"
 end
 
 group :development do
@@ -77,7 +78,5 @@ gem "pundit", "~> 2.4"
 gem "jsbundling-rails", "~> 1.3"
 
 gem "esbuild-rails", "~> 0.1.4"
-
-gem "rspec", "~> 3.13"
 
 gem "nice_partials", "~> 0.10.1"

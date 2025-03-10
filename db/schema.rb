@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_09_150050) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_10_081037) do
   create_table "exercise_sets", force: :cascade do |t|
     t.integer "weight"
     t.integer "reps"
     t.decimal "rir"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "exercise_id", null: false
+    t.index ["exercise_id"], name: "index_exercise_sets_on_exercise_id"
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -71,6 +73,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_09_150050) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "exercise_sets", "exercises"
   add_foreign_key "exercises", "users"
   add_foreign_key "routines", "users"
   add_foreign_key "sessions", "users"
