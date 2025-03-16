@@ -17,7 +17,7 @@
         <% @addable_exercises.each do |e| %>
           <%= turbo_frame_tag dom_id(e, :view) do %>
             <%= render e do |p| %>
-              <%= p.body do %>
+              <%= p.header do %>
                 <%= link_to "", routine_add_exercise_path(routine_id: routine.id, exercise_id: e.id), data: {turbo_method: :post}, class: "px-2 fa fa-plus py-2 font-semibold transition ease-in-out hover:bg-black hover:text-white rounded-full" %>
               <% end %>
             <% end %>
@@ -29,7 +29,7 @@
 
   <div class="flex flex-col">
     <div class="flex gap-2">
-      <%= form.text_field :name, placeholder: @routine.name, class: "p-2 rounded-xl outline outline-gray-200 focus:outline-black w-full" %>
+      <%= form.text_field :name, placeholder: routine.name, class: "p-2 rounded-xl outline outline-gray-200 focus:outline-black w-full" %>
       <%= form.submit class: "px-4 py-1 bg-black text-white text-sm font-semibold rounded-full transition ease-in-out hover:bg-emerald-400/75" %>
     </div>
     <hr class="border-4 border-dashed border-black my-10">
@@ -39,11 +39,45 @@
     </div>
 
     <%= turbo_frame_tag "exercises" do %>
-      <% @routine.exercises.each do |e| %>
+      <% routine.exercises.each do |e| %>
         <%= turbo_frame_tag dom_id(e, :edit) do %>
           <%= render e do |p| %>
+            <% p.header do %>
+              <%= link_to "x", routine_remove_exercise_path(routine_id: routine.id, exercise_id: e.id), data: {turbo_method: :post}, class: "font-semibold" %>
+            <% end %>
             <% p.body do %>
-              <%= link_to "x", routine_remove_exercise_path(routine_id: @routine.id, exercise_id: e.id), data: {turbo_method: :post}, class: "font-semibold" %>
+              <table class="w-[90%] text-left mx-auto table-auto min-w-max">
+                <thead>
+                  <tr>
+                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                      <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                        Weight
+                      </p>
+                    </th>
+                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                      <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                        Reps
+                      </p>
+                    </th>
+                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                      <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                        RIR
+                      </p>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% routine.exercise_sets.where(exercise_id: e.id).each do |set|%>
+                    <tr class="mt-8">
+                      <%= form.fields_for "exercise_sets[]", set do |sform| %>
+                        <td><%= sform.text_field :weight, class: "p-2 max-w-[4rem] text-center text-sm rounded-xl outline outline-gray-200 focus:outline-black" %></p></td>
+                        <td><p><%= sform.text_field :reps, class: "p-2 max-w-[4rem] text-center text-sm rounded-xl outline outline-gray-200 focus:outline-black" %></p></td>
+                        <td><p><%= sform.text_field :rir, class: "p-2 max-w-[4rem] text-center text-sm rounded-xl outline outline-gray-200 focus:outline-black" %></p></td>
+                      <% end %>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
             <% end %>
           <% end %>
         <% end %>

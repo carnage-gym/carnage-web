@@ -12,10 +12,11 @@ class RoutinesController < ApplicationController
 
   # GET /routines/new
   def new
+    # TODO: if a routine called "new routine" already exists, it's impossible to create new ones.
+    # fix that.
     @routine = current_user.routines.new(name: "New Routine")
-    @routine.save
-
-    render :edit
+    @routine.save!
+    redirect_to edit_routine_path(@routine.id)
   end
 
   # GET /routines/1/edit
@@ -28,7 +29,7 @@ class RoutinesController < ApplicationController
   def update
     respond_to do |format|
       if @routine.update(routine_params)
-        format.html { redirect_to @routine, notice: "Routine was successfully updated." }
+        format.html { redirect_to routines_path, notice: "Routine was successfully updated." }
         format.json { render :show, status: :ok, location: @routine }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,6 +54,9 @@ class RoutinesController < ApplicationController
     @exercise = Exercise.find(params[:exercise_id])
 
     @routine.exercises.push(@exercise)
+
+    # also creates one exercise set.
+    @exercise.exercise_sets.create!(rir: 9, weight: 1, reps: 1, routine_id: @routine.id)
 
     respond_to do |format|
       format.html { redirect_to edit_routine_path(@routine) }

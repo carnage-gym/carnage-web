@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_10_081037) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_16_142534) do
   create_table "exercise_sets", force: :cascade do |t|
     t.integer "weight"
     t.integer "reps"
@@ -18,7 +18,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_10_081037) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "exercise_id", null: false
+    t.integer "routine_id", null: false
     t.index ["exercise_id"], name: "index_exercise_sets_on_exercise_id"
+    t.index ["routine_id"], name: "index_exercise_sets_on_routine_id"
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -74,6 +76,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_10_081037) do
   end
 
   add_foreign_key "exercise_sets", "exercises"
+  add_foreign_key "exercise_sets", "routines"
   add_foreign_key "exercises", "users"
   add_foreign_key "routines", "users"
   add_foreign_key "sessions", "users"
