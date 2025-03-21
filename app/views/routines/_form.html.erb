@@ -46,7 +46,7 @@
               <%= link_to "x", routine_remove_exercise_path(routine_id: routine.id, exercise_id: e.id), data: {turbo_method: :post}, class: "font-semibold" %>
             <% end %>
             <% p.body do %>
-              <table class="w-[90%] text-left mx-auto table-auto min-w-max">
+              <table class="w-[90%] text-left mx-auto table-auto min-w-max [&_:is(tr):where(:nth-child(4))]:text-right">
                 <thead>
                   <tr>
                     <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
@@ -73,11 +73,18 @@
                         <td><%= sform.text_field :weight, class: "p-2 max-w-[4rem] text-center text-sm rounded-xl outline outline-gray-200 focus:outline-black" %></p></td>
                         <td><p><%= sform.text_field :reps, class: "p-2 max-w-[4rem] text-center text-sm rounded-xl outline outline-gray-200 focus:outline-black" %></p></td>
                         <td><p><%= sform.text_field :rir, class: "p-2 max-w-[4rem] text-center text-sm rounded-xl outline outline-gray-200 focus:outline-black" %></p></td>
+                        <td><%= link_to "a", exercise_set_path(set, routine_id: routine.id), data: {turbo_method: :delete} %></td>
                       <% end %>
                     </tr>
                   <% end %>
                 </tbody>
               </table>
+              <div class="flex justify-center mt-2">
+                <%= link_to routine_add_exercise_set_path(routine_id: routine.id, exercise_id: e.id), data: {turbo_method: :post}, class: "px-2 text-sm flex items-center py-2 transition ease-in-out hover:bg-black hover:text-white rounded-full" do %>
+                  <i class="fa fa-plus"></i>
+                  <p class="ml-1">Add Set</p>
+                <% end %>
+              </div>
             <% end %>
           <% end %>
         <% end %>

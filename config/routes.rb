@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :routines, except: [:create] do
     post "add_exercise", to: "routines#add_exercise"
     post "remove_exercise", to: "routines#remove_exercise"
+    post "add_exercise_set", to: "routines#add_exercise_set"
+    post "remove_exercise_set", to: "routines#remove_exercise_set"
   end
   resources :exercises
   resource :session

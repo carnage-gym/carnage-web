@@ -76,6 +76,16 @@ class RoutinesController < ApplicationController
     end
   end
 
+  def add_exercise_set
+    @routine = Routine.find(params[:routine_id])
+    @exercise = Exercise.find(params[:exercise_id])
+
+    set = @exercise.exercise_sets.new(reps: 1, rir: 1, weight: 1, routine_id: @routine.id)
+    if set.save!
+      redirect_to edit_routine_path(@routine), notice: "yup."
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

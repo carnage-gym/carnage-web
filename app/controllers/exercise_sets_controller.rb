@@ -37,9 +37,10 @@ class ExerciseSetsController < ApplicationController
   # DELETE /exercise_sets/1 or /exercise_sets/1.json
   def destroy
     @exercise_set.destroy!
+    routine = Routine.find(params[:routine_id])
 
     respond_to do |format|
-      format.html { redirect_to exercise_sets_path, status: :see_other, notice: "Exercise set was successfully destroyed." }
+      format.html { redirect_to edit_routine_path(routine), status: :see_other, notice: "Exercise set was successfully destroyed." }
       format.json { head :no_content }
     end
   end
